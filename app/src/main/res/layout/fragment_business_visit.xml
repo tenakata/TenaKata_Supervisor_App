@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+
+        <TextView
+            android:id="@+id/et_layout_currentdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="Current Date"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+        </TextView>
+
+
+        <View
+            android:id="@+id/underline1"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/colorBlack"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/et_layout_currentdate"
+            app:layout_constraintStart_toStartOf="@+id/et_layout_currentdate"
+            app:layout_constraintTop_toBottomOf="@+id/et_layout_currentdate">
+
+        </View>
+
+        <EditText
+            android:id="@+id/et_comments"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/roundbox"
+            android:ems="10"
+
+            android:fontFamily="@font/montserrat_regular"
+            android:gravity="left"
+            android:inputType="textMultiLine"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:singleLine="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_comments" />
+
+
+        <TextView
+            android:id="@+id/tv_comments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="@string/comments"
+            android:textColor="#000000"
+            android:textSize="@dimen/sp_16"
+            app:layout_constraintStart_toStartOf="@+id/et_layout_currentdate"
+            app:layout_constraintTop_toBottomOf="@+id/et_layout_currentdate" />
+
+        <TextView
+            android:id="@+id/tv_pleaserate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/pleaserate"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/underline"
+            app:layout_constraintTop_toBottomOf="@+id/underline" />
+
+        <TextView
+            android:id="@+id/tv_stock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/stock"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_pleaserate"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pleaserate" />
+
+        <TextView
+            android:id="@+id/tv_busyshop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/busyshop"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/tv_stock"
+            app:layout_constraintTop_toBottomOf="@+id/tv_stock" />
+
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/bg_login_button"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="@string/submit"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="@string/location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_comments">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/pt_sans_regular"
+                android:textSize="@dimen/sp_18"
+                android:inputType="text"
+                android:paddingTop="@dimen/dp_5"
+                android:paddingBottom="@dimen/dp_5" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <RatingBar
+            android:id="@+id/ratingBar1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:scaleX=".7"
+            android:scaleY=".7"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_stock"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_stock" />
+
+        <RatingBar
+            android:id="@+id/ratingBar2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="1dp"
+            android:numStars="5"
+            android:scaleX=".7"
+            android:scaleY=".7"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_busyshop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_busyshop" />
+
+        <View
+            android:id="@+id/underline"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/colorBlack"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+
+        </View>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

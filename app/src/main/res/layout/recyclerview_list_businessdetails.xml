@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/dp_3"
+        app:cardElevation="@dimen/dp_4"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="400dp"
+            android:layout_height="wrap_content">
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/pieChart"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="@dimen/dp_5"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_average_sales"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="KES 8,000"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_11"
+                app:layout_constraintEnd_toEndOf="@+id/tv_head_average_sales"
+                app:layout_constraintStart_toStartOf="@+id/tv_head_average_sales"
+                app:layout_constraintTop_toBottomOf="@+id/tv_head_average_sales" />
+
+            <View
+                android:id="@+id/view8"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="30dp"
+                android:background="@color/black"
+                app:layout_constraintEnd_toEndOf="@+id/pieChart"
+                app:layout_constraintStart_toStartOf="@+id/pieChart"
+                app:layout_constraintTop_toBottomOf="@+id/tv_average_sales" />
+
+            <TextView
+                android:id="@+id/tv_head_average_sales"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="Average Sale"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_11"
+                app:layout_constraintEnd_toEndOf="@+id/pieChart"
+                app:layout_constraintStart_toStartOf="@+id/pieChart"
+                app:layout_constraintTop_toTopOf="@+id/pieChart" />
+
+            <TextView
+                android:id="@+id/tv_average_percentage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="49%"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_11"
+                app:layout_constraintEnd_toEndOf="@+id/tv_average_sales"
+                app:layout_constraintStart_toStartOf="@+id/tv_average_sales"
+                app:layout_constraintTop_toBottomOf="@+id/view8" />
+
+            <TextView
+                android:id="@+id/tv_title_sales"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/pt_sans_bold"
+                android:gravity="left"
+                android:text="Purchase Activity."
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/sp_13"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/pieChart"
+                app:layout_constraintTop_toTopOf="@+id/pieChart" />
+
+            <TextView
+                android:id="@+id/tv_subtitle_sales"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/pt_sans_regular"
+                android:gravity="left"
+                android:text="A breakdown of monthly\nsale captured"
+                android:textSize="@dimen/sp_13"
+                app:layout_constraintEnd_toEndOf="@+id/tv_title_sales"
+                app:layout_constraintStart_toStartOf="@+id/tv_title_sales"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_sales" />
+
+            <TextView
+                android:id="@+id/tv_color_green_sales"
+                android:layout_width="@dimen/dp_10"
+                android:layout_height="10dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_green_ractangle"
+                android:text=""
+                app:layout_constraintStart_toStartOf="@+id/tv_subtitle_sales"
+                app:layout_constraintTop_toBottomOf="@+id/tv_subtitle_sales" />
+
+            <TextView
+                android:id="@+id/tv_cash_sales"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/pt_sans_regular"
+                android:text="Cash sales KES 12,00"
+                android:textSize="@dimen/sp_12"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_color_green_sales"
+                app:layout_constraintEnd_toEndOf="@+id/tv_subtitle_sales"
+                app:layout_constraintStart_toEndOf="@+id/tv_color_green_sales"
+                app:layout_constraintTop_toTopOf="@+id/tv_color_green_sales" />
+
+            <TextView
+                android:id="@+id/tv_color_red_sales"
+                android:layout_width="@dimen/dp_10"
+                android:layout_height="@dimen/dp_10"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_orange_ractangle"
+                android:text=""
+                app:layout_constraintStart_toStartOf="@+id/tv_color_green_sales"
+                app:layout_constraintTop_toBottomOf="@+id/tv_color_green_sales" />
+
+            <TextView
+                android:id="@+id/tv_credit_sale"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/pt_sans_regular"
+                android:text="Cash Purchase KES 12,00"
+                android:textSize="@dimen/sp_12"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_color_red_sales"
+                app:layout_constraintEnd_toEndOf="@+id/tv_cash_sales"
+                app:layout_constraintStart_toEndOf="@+id/tv_color_red_sales"
+                app:layout_constraintTop_toTopOf="@+id/tv_color_red_sales" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

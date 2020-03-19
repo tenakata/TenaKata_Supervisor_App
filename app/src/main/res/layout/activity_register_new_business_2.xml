@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@color/colorBlue"
+        android:layout_height="match_parent"
+        tools:context=".Activity.ActivityRegisterNewBusiness_2">
+
+        <ImageView
+            android:id="@+id/tv_head_left"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/back" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+
+            android:layout_height="match_parent"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/round_corner"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+
+            <ProgressBar
+                android:id="@+id/progressBar2"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:max="5"
+                android:scaleY="2"
+                android:progress="2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <Button
+                android:id="@+id/secondbutton"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/bg_login_button"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/next"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/et_comments"
+                app:layout_constraintStart_toStartOf="@+id/et_comments"
+                app:layout_constraintTop_toBottomOf="@+id/et_comments"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <EditText
+                android:id="@+id/et_comments"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/roundbox"
+                android:ems="10"
+
+
+                android:fontFamily="@font/montserrat_regular"
+                android:gravity="left"
+                android:inputType="textMultiLine"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:singleLine="false"
+                app:layout_constraintEnd_toEndOf="@+id/spinnercorebusiness"
+                app:layout_constraintStart_toStartOf="@+id/spinnercorebusiness"
+                app:layout_constraintTop_toBottomOf="@+id/spinnercorebusiness" />
+
+            <Spinner
+                android:id="@+id/spinnergender"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="0dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+              android:entries="@array/gender"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/progressBar2" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_layoutbusinessname"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="30dp"
+                app:layout_constraintEnd_toEndOf="@+id/spinnergender"
+                app:layout_constraintStart_toStartOf="@+id/spinnergender"
+                app:layout_constraintTop_toBottomOf="@+id/spinnergender">
+
+                <EditText
+                    android:id="@+id/et_shop_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:hint="@string/shoplcoation" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Spinner
+                android:id="@+id/spinnercorebusiness"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
+                android:layout_marginTop="30dp"
+                android:entries="@array/corebusinessarray"
+                app:layout_constraintEnd_toEndOf="@+id/et_layoutbusinessname"
+                app:layout_constraintStart_toStartOf="@+id/et_layoutbusinessname"
+                app:layout_constraintTop_toBottomOf="@+id/et_layoutbusinessname" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_head_register_second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/registernewbusiness"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_head_left"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_head_left" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

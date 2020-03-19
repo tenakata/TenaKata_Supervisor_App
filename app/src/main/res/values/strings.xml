@@ -1,0 +1,186 @@
+<resources>
+    <string name="app_name">TenaKata app</string>
+    <string name="txt_tutorial_text_1">Welcome To Tenakata\nMobile app </string>
+    <string name="txt_tutorial_text_2">Amazing Payment\nExperience\njust tap and go </string>
+    <string name="error_empty">This field can\'t be blank.</string>
+    <string name="error_user_not_exists">This phone number is not registered with any account.</string>
+    <string name="error_unsuccessful_authentication_attempt">Fingerprint not authorized, try again.</string>
+    <string name="error_too_many_attempts">Too many attempts, try again later.</string>
+    <string name="error_fingerprint_not_saved">You don\'t have any fingerprint saved on your device, add one from settings.</string>
+    <string name="txt_home">HOME</string>
+    <string name="txt_Profile">PROFILE</string>
+    <string name="txt_tranining">TRAINING</string>
+    <string name="txt_reminder">DAILY REMINDER</string>
+    <string name="txt_faq">FAQ &amp; HELP</string>
+    <string name="txt_contact">CONTACT US</string>
+    <string name="txt_logout">LOGOUT</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="purchase">Purchase</string>
+    <string name="sales">Sales</string>
+    <string name="txt_sales">Cash Sale</string>
+    <string name="txt_puchases">Credit Sale</string>
+
+    <string name="txt_server_not_respond">Slow Internet connection please check your internet connection</string>
+    <string name="text_server_error">Oops! Server Error found please wait and try again</string>
+    <string name="txt_connection_error">Please Check your internet Connection</string>
+    <string name="txt_went_wrong">Something went wrong please try again</string>
+    <string name="txt_parsing_error">we are facing some parsing error please try again</string>
+    <string name="ok_text">Okay</string>
+    <string name="cancel_text">Cancel</string>
+    <string name="error_sub_title_text">Looks like there is a problem at our end, try again in sometime.</string>
+    <string name="error_title_text">Warning</string>
+    <string name="txt_update_available">Update Available</string>
+    <string name="txt_login_again">Unauthorized access need to login again</string>
+    <string name="net_error">Location access seems disabled,\ngo to settings to enable</string>
+    <string name="no_internet_connection">Oops! No Internet Connection</string>
+    <string name="enable_permission">Enable Permission</string>
+    <string name="settings">Settings. </string>
+    <string name="retry">retry</string>
+    <string name="unable_to_get_gps">Unable to get GPS</string>
+    <string name="no_gps">no GPS available</string>
+    <string name="no_internet">No internet Connection Found</string>
+    <string name="no_internet_available">No internet Connection available</string>
+    <string name="message_back_pressed_text">Press again to exit</string>
+    <string name="txt_enter_mobile_number">Enter mobile number</string>
+    <string name="txt_enter_valid_mobile">Enter Valid mobile number</string>
+    <string name="txt_enter_password">Enter Password</string>
+    <string name="txt_password_lenth_short">Password length is too short</string>
+    <string name="txt_select_country_code">Select country code</string>
+    <string name="txt_wrong_otp">The sms verification code is invalid. Please resend the verification code sms and be sure use the verification code provided by the user.</string>
+    <string name="txt_code_expired">The sms code has expired. Please re-send the verification code to try again.</string>
+    <string name="txt_enter_confirm_password">Enter confirm Password</string>
+    <string name="txt_confirm_password_not_matching">Confirm password not matching</string>
+    <string name="txt_cash_purchase">Cash Purchase</string>
+    <string name="txt_credit_purchase">Credit purchase</string>
+    <string name="txt_want_to_logout">Are you sure you want to logout?</string>
+    <string name="edit">EDIT</string>
+    <string name="enter_date">Enter Date</string>
+    <string name="enter_amount">Enter Amount</string>
+    <string name="phone_no">Phone no.</string>
+    <string name="id_no">ID no.</string>
+    <string name="name">Name</string>
+    <string name="itemlist">Item List</string>
+    <string name="cash">Cash</string>
+    <string name="credit">Credit</string>
+    <string name="add_new_credit_sale">Add new credit sale</string>
+    <string name="enterdate">Enter Date</string>
+    <string name="capture_and_attach">Capture and Attach Book Record</string>
+    <string name="save">SAVE</string>
+    <string name="add_daily_sales">Add Daily Sales</string>
+    <string name="title_activity__profile">Sign in</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+
+    <string name="edit_profile">Edit Profile</string>
+    <string name="change_your_profile_photo">Change your profile photo</string>
+    <string name="profile">Profile</string>
+    <string name="classified_information">Classified Information</string>
+    <string name="done">Done</string>
+    <string name="training">Training</string>
+    <string name="pleaserate">Please Rate</string>
+    <string name="stock">Stock</string>
+    <string name="busyshop">Busy Shop</string>
+    <string name="submit">Submit</string>
+    <string name="mamabena">Mama Bena</string>
+    <string name="location">Location</string>
+    <string name="comments">Comments</string>
+    <string name="mypanel">My Panel</string>
+    <string name="supervisor">supervisor</string>
+    <string name="newbusiness">New Business</string>
+    <string name="addnewbusiness"> + New Business</string>
+    <string name="totalmonthturnover">Total month turnover</string>
+    <string name="currentdate">Current Date</string>
+    <string name="registernewbusiness">Register New Business</string>
+    <string name="businessname">Business Name</string>
+    <string name="nameofbowner">Name of Owner</string>
+    <string name="phoneno">Phone no.</string>
+    <string name="isbusinessregistered">Is Business Registered</string>
+    <string name="yes">yes</string>
+    <string name="no">No</string>
+    <string name="registrationno">Registration no.</string>
+    <string name="next">Next</string>
+    <string name="gender">Gender</string>
+    <string name="shoplcoation">Shop Location</string>
+    <string name="corebusiness">Core Business</string>
+    <string name="otheractivities">Other Activities</string>
+    <string name="capturedocuments">Capture Documents</string>
+    <string name="businessstartdate">Business Start Date</string>
+    <string name="noofemployees">No. of Employees</string>
+    <string name="branches">Branches</string>
+    <string name="Preferredfinnancial">Preferred financial institute</string>
+    <string name="Name">name</string>
+    <string name="mcq1">How do you receive payments ?</string>
+    <string name="mcq2">How do you make payments ?</string>
+    <string name="mcq3">Source of business funding ?</string>
+    <string name="mpesa">MPESA</string>
+    <string name="cashmcq">Cash</string>
+    <string name="banktransfer">BANK TRANSFER</string>
+    <string name="chequemcq">CHEQUE</string>
+    <string name="personal">Personal</string>
+    <string name="borrowing">Borrowing</string>
+    <string name="takenanyloan">Taken any Loans ?</string>
+    <string name="loanpurpose">Loan Purpose</string>
+    <string name="loanamount">Loan Amount</string>
+    <string name="howtoimprove">How to improve Sales.</string>
+    <string name="videodescription">A large and lovable rabbit deals with three tiny bullies, led by a flying squirrel, who are determined to squelch his happiness.</string>
+    <string name="pleaseratevideo">Please Rate Video</string>
+    <string name="creatempin">CREATE MPIN</string>
+    <string name="show">SHOW</string>
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    <string-array name="loanpurposearray">
+        <item>Increase business stock</item>
+        <item>Invest in a new business</item>
+        <item>Make a personal investment</item>
+        <item>Buy assets</item>
+        <item>School Fees</item>
+        <item>House Holds Expenses</item>
+        <item>Others</item>
+    </string-array>
+    <string-array name="locationarray">
+        <item>Ghaziabad</item>
+        <item>Noida</item>
+        <item>Mumbai</item>
+        <item>Kolkata</item>
+        <item>Others</item>
+    </string-array>
+    <string-array name="corebusinessarray">
+        <item>Selling Clothes and Fashion</item>
+        <item>Selling Raw Vegetables and grains</item>
+        <item>Selling Cooked Food</item>
+        <item>Service Shop; Video Rentals, Stationary, Printing</item>
+        <item>Beauty Products Shop</item>
+        <item>Wholesale Shop</item>
+        <item>Retail Shop</item>
+        <item>Mobile Phone and Accessories Shop</item>
+        <item>Mini Market</item>
+        <item>Butchery</item>
+        <item>Transport Business</item>
+        <item>Others</item>
+    </string-array>
+    <string-array name="financialarray">
+        <item>Commercial Bank</item>
+        <item>SACCOs</item>
+        <item>Microfinance Institutions (MFIs)</item>
+        <item>Other (Within the markets, Mpesa, Table banking etc.)</item>
+    </string-array>
+
+
+
+
+
+
+
+
+</resources>
+
