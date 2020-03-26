@@ -133,6 +133,7 @@
     <string name="videodescription">A large and lovable rabbit deals with three tiny bullies, led by a flying squirrel, who are determined to squelch his happiness.</string>
     <string name="pleaseratevideo">Please Rate Video</string>
     <string name="creatempin">CREATE MPIN</string>
+    <string name="txt_permission_denied_message"><![CDATA[If you reject permission,you can not use this service  Please turn on permissions at [Setting] > [Permission]]]></string>
     <string name="show">SHOW</string>
     <string-array name="gender">
         <item>Male</item>

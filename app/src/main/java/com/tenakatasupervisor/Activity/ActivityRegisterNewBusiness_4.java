@@ -90,7 +90,7 @@ private ActivityRegisterNewBusiness4Binding binding;
         intent.putExtra(HRAppConstants.key_corebusiness,previntent.getStringExtra(HRAppConstants.key_corebusiness));
 
 
-
+        intent.putExtra(HRAppConstants.key_country_code,previntent.getStringExtra(HRAppConstants.key_country_code));
         intent.putExtra(HRAppConstants.key_activities,previntent.getStringExtra(HRAppConstants.key_activities));
         intent.putExtra(HRAppConstants.key_capturedocuments,previntent.getStringExtra(HRAppConstants.key_capturedocuments));
         intent.putExtra(HRAppConstants.key_businessstartdate,previntent.getStringExtra(HRAppConstants.key_businessstartdate));

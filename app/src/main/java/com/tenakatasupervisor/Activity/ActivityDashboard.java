@@ -1,5 +1,6 @@
 package com.tenakatasupervisor.Activity;
 
+import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -13,10 +14,15 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.gdacciaro.iOSDialog.iOSDialog;
 import com.gdacciaro.iOSDialog.iOSDialogBuilder;
 import com.gdacciaro.iOSDialog.iOSDialogClickListener;
@@ -36,6 +42,7 @@ import com.tenakatasupervisor.Utilities.HRPrefManager;
 import com.tenakatasupervisor.Utilities.HRUrlFactory;
 import com.tenakatasupervisor.Utilities.HRValidationHelper;
 import com.tenakatasupervisor.databinding.ActivityDashboardBinding;
+import com.theartofdev.edmodo.cropper.CropImage;
 import com.yarolegovich.slidingrootnav.SlideGravity;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
@@ -45,15 +52,18 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ActivityDashboard extends BaseActivity implements AdapterView.OnItemClickListener,
-        View.OnClickListener , BaseCallBacks {
+        View.OnClickListener , BaseCallBacks,FragmentProfile.Callback {
     private Context context;
     private ActivityDashboardBinding binding;
     private SlidingRootNav drawerLayout;
+    public static String profilepicpath = null;
 
     private boolean isHome = false;
     private boolean isSale = true;
     private boolean isPurchage = true;
     ProgressDialog progressDialog ;
+    private TextView userName;
+    private ImageView userImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +71,8 @@ public class ActivityDashboard extends BaseActivity implements AdapterView.OnIte
         binding = DataBindingUtil.setContentView(this,R.layout.activity_dashboard);
         context = this;
 
-    //    binding.includedToolbar.viewUserName.setText("Hello "+HRValidationHelper.optional(HRPrefManager.getInstance(context).getUserDetail().getResult().getName()));
+       binding.includedToolbar.viewUserName.setText("Hello "+HRValidationHelper.optional(HRPrefManager.getInstance(context).getUserDetail().getResult().getName()));
+        new FragmentProfile(this);
 
 
         initDrawer(binding.includedToolbar.toolbarDashboard,binding.includedToolbar.toolbarMenuView);
@@ -118,8 +129,8 @@ public class ActivityDashboard extends BaseActivity implements AdapterView.OnIte
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        binding.includedToolbar.viewUserName.setText("Edit Profile");
-                        getSupportFragmentManager().beginTransaction().replace(R.id.dashboardFrame,new FragmentProfile()).commit();
+                        binding.includedToolbar.viewUserName.setText("Profile");
+                        loadFragment(new FragmentProfile(this));
 
                     }
                 }, 225);
@@ -242,8 +253,14 @@ public class ActivityDashboard extends BaseActivity implements AdapterView.OnIte
 
     private void addDrawerHeader(ListView drawerList){
         View headerView = ((LayoutInflater)context.getSystemService(LAYOUT_INFLATER_SERVICE)).inflate(R.layout.drawer_header, null, false);
-        TextView userName = headerView.findViewById(R.id.viewUserName);
+         userName = headerView.findViewById(R.id.viewUserName);
+        userImage = headerView.findViewById(R.id.imageView4);
         userName.setText(HRValidationHelper.optional("Hello "+HRPrefManager.getInstance(context).getUserDetail().getResult().getName()));
+        Glide.with(this)
+                .load(HRPrefManager.getInstance(context).getUserDetail().getResult().getImage())
+                .apply(new RequestOptions()
+                        .transform(new CircleCrop(),new RoundedCorners(30)).placeholder(R.drawable.avator_profile))
+                .into(userImage);
         drawerList.addHeaderView(headerView);
     }
 
@@ -303,7 +320,7 @@ public class ActivityDashboard extends BaseActivity implements AdapterView.OnIte
 
     @Override
     public void onTaskError(String errorMsg) {
-        progressDialog .dismiss();
+        super.onTaskError(errorMsg);
     }
 
     @Override
@@ -325,4 +342,44 @@ public class ActivityDashboard extends BaseActivity implements AdapterView.OnIte
     public void onProviderDisabled(String s) {
 
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                try {
+
+                    profilepicpath = result.getUri().getEncodedPath();
+
+
+
+                } catch (OutOfMemoryError e) {
+                    e.printStackTrace();
+                }
+
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onChangeName() {
+        setHeaderNameIimage();
+    }
+
+    private void setHeaderNameIimage(){
+        if (userName!=null)
+            userName.setText(HRValidationHelper.optional("Hello "+HRPrefManager.getInstance(context).getUserDetail().getResult().getName()));
+
+        if (userImage!=null) {
+            Glide.with(this)
+                    .load(HRPrefManager.getInstance(context).getUserDetail().getResult().getImage())
+                    .apply(new RequestOptions()
+                            .transform(new CircleCrop(), new RoundedCorners(30)).placeholder(R.drawable.avator_profile))
+                    .into(userImage);
+        }
+    }
+
 }

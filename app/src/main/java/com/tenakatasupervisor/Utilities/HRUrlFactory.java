@@ -1,6 +1,9 @@
 package com.tenakatasupervisor.Utilities;
 
 
+import android.util.Log;
+import android.widget.Toast;
+
 import com.tenakatasupervisor.Application.App;
 import com.tenakatasupervisor.BuildConfig;
 import java.util.HashMap;
@@ -60,7 +63,9 @@ public class HRUrlFactory {
     public static HashMap<String, String> getAppHeaders(){
         HashMap<String, String> appHeaders = getDefaultHeaders();
         appHeaders.put("token", App.getInstance().getAccessToken());
+        Log.e("yoooooooo", App.getInstance().getAccessToken());
         return appHeaders;
+        //Lu0kawT93cnerQ2CtpsY   after login
     }
 
     public static String getTimezone() {

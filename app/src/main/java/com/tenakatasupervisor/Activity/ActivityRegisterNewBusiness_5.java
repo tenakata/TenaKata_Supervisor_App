@@ -46,7 +46,10 @@ public class ActivityRegisterNewBusiness_5 extends BaseActivity {
     Intent intent;
     StringBuilder mcq1result=new StringBuilder();
     StringBuilder mcq2result=new StringBuilder();
-    StringBuilder mcq3result=new StringBuilder();
+   StringBuilder mcq3result=new StringBuilder();
+
+
+
 
 
 
@@ -87,6 +90,7 @@ public class ActivityRegisterNewBusiness_5 extends BaseActivity {
                     break;
                 }
 
+
         }
     }
 
@@ -96,7 +100,7 @@ public class ActivityRegisterNewBusiness_5 extends BaseActivity {
         String name=intent.getStringExtra(HRAppConstants.key_name);
         String phone=intent.getStringExtra(HRAppConstants.key_mobilenumber);
         String location=intent.getStringExtra(HRAppConstants.key_spinnershoplocation);
-        String country_code="91";
+        String country_code=intent.getStringExtra(HRAppConstants.key_country_code);
         String name_of_owner=intent.getStringExtra(HRAppConstants.key_nameofowner);
         String is_registered=intent.getStringExtra(HRAppConstants.key_isbusinessregistered);
         String registration_no=intent.getStringExtra(HRAppConstants.key_registrationno);
@@ -137,51 +141,75 @@ public class ActivityRegisterNewBusiness_5 extends BaseActivity {
 
 
     private boolean pageValidation() {
+        mcq1result.delete(0, mcq1result.length());
+        mcq2result.delete(0, mcq2result.length());
+        mcq3result.delete(0, mcq3result.length());
+        mcq1result.append(" ");
+        mcq2result.append(" ");
+        mcq3result.append(" ");
         int countfor1=0, countfor2=0,countfor3=0;
         Boolean value=false;
         if (binding.op1a.isChecked()){
-            mcq1result.append(binding.op1a.getText().toString());
+
+           mcq1result.append(binding.op1a.getText().toString());
+
             countfor1++;
         }
         if (binding.op1b.isChecked()){
-            mcq1result.append(binding.op1b.getText().toString());
+
+
+           mcq1result.append(binding.op1b.getText().toString());
+
             countfor1++;
         }
         if (binding.op1c.isChecked()){
-            mcq1result.append(binding.op1c.getText().toString());
+
+
+           mcq1result.append(binding.op1c.getText().toString());
+
             countfor1++;
         }
         if (binding.op1d.isChecked()){
+
+
             mcq1result.append(binding.op1d.getText().toString());
+
             countfor1++;
         }
 
 
         if (binding.op2a.isChecked()){
+
             mcq2result.append(binding.op2a.getText().toString());
             countfor2++;
         }
         if (binding.op2b.isChecked()){
+
             mcq2result.append(binding.op2b.getText().toString());
             countfor2++;
         }
         if (binding.op2c.isChecked()){
+
             mcq2result.append(binding.op2c.getText().toString());
             countfor2++;
         }
         if (binding.op2d.isChecked()){
+
             mcq2result.append(binding.op2d.getText().toString());
             countfor2++;
         }
 
 
 
-        if (binding.op1a.isChecked()){
+        if (binding.op3a.isChecked()){
+
             mcq3result.append(binding.op3a.getText().toString());
             countfor3++;
         }
-        if (binding.op1b.isChecked()){
+        if (binding.op3b.isChecked()){
+
             mcq3result.append(binding.op3b.getText().toString());
+
             countfor3++;
         }
 

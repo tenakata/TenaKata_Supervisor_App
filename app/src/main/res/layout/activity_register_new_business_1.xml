@@ -2,226 +2,235 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:background="@color/colorBlue"
         android:layout_height="match_parent"
-        tools:context=".Activity.ActivityRegisterNewBusiness_1">
-
+        android:fillViewport="true">
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-
+            android:background="@color/colorBlue"
             android:layout_height="match_parent"
-            android:layout_marginTop="100dp"
-            android:background="@drawable/round_corner"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            tools:context=".Activity.ActivityRegisterNewBusiness_1">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_layoutbusinessname"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="40dp"
+
+                android:layout_height="match_parent"
+                android:layout_marginTop="70dp"
+                android:background="@drawable/round_corner"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/progressBar1">>
+                app:layout_constraintTop_toTopOf="parent">
 
-                <EditText
-                    android:id="@+id/et_businessname"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_layoutbusinessname"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_regular"
-                    android:hint="@string/businessname" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_layoutnameofowner"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="10dp"
-                app:layout_constraintEnd_toEndOf="@+id/et_layoutbusinessname"
-                app:layout_constraintStart_toStartOf="@+id/et_layoutbusinessname"
-                app:layout_constraintTop_toBottomOf="@+id/et_layoutbusinessname">>
-
-                <EditText
-                    android:id="@+id/et_nameofowner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_regular"
-                    android:hint="@string/nameofbowner" />
-
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_layout_phone"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="10dp"
-                app:layout_constraintEnd_toEndOf="@+id/et_layoutnameofowner"
-                app:layout_constraintStart_toEndOf="@+id/ccp"
-                app:layout_constraintTop_toBottomOf="@+id/et_layoutnameofowner">>
-
-                <EditText
-                    android:id="@+id/et_phoned"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_regular"
-                    android:inputType="number" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_isregistered"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/tv_isregistered"
-                app:layout_constraintTop_toTopOf="@+id/tv_isregistered">
-
-                <RadioGroup
-                    android:id="@+id/radioGroup"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="0dp"
-                    android:orientation="horizontal"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toBottomOf="@+id/progressBar1">>
 
-                    <RadioButton
-                        android:id="@+id/radioButtonyes"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="30dp"
-                        android:backgroundTint="@color/colorBlue"
-                        android:fontFamily="@font/montserrat_regular"
-                        android:text="@string/yes" />
-
-                    <RadioButton
-                        android:id="@+id/radioButtonNo"
+                    <EditText
+                        android:id="@+id/et_businessname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_regular"
-                        android:text="@string/no" />
-                </RadioGroup>
-            </LinearLayout>
+                        android:hint="@string/businessname"
+                        android:textSize="@dimen/sp_14" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_layoutnameofowner"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="@+id/et_layoutbusinessname"
+                    app:layout_constraintStart_toStartOf="@+id/et_layoutbusinessname"
+                    app:layout_constraintTop_toBottomOf="@+id/et_layoutbusinessname">>
+
+                    <EditText
+                        android:id="@+id/et_nameofowner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:hint="@string/nameofbowner"
+                        android:textSize="@dimen/sp_14" />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_layout_phone"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="@+id/et_layoutnameofowner"
+                    app:layout_constraintStart_toEndOf="@+id/ccp"
+                    app:layout_constraintTop_toBottomOf="@+id/et_layoutnameofowner">>
+
+                    <EditText
+                        android:id="@+id/et_phoned"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:inputType="number"
+                        android:textSize="@dimen/sp_14" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_isregistered"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/tv_isregistered"
+                    app:layout_constraintTop_toTopOf="@+id/tv_isregistered">
+
+                    <RadioGroup
+                        android:id="@+id/radioGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <RadioButton
+                            android:id="@+id/radioButtonyes"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="30dp"
+                            android:backgroundTint="@color/colorBlue"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:text="@string/yes" />
+
+                        <RadioButton
+                            android:id="@+id/radioButtonNo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:text="@string/no" />
+                    </RadioGroup>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_isregistered"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@string/isbusinessregistered"
+                    android:textSize="@dimen/sp_16"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_layout_phone" />
+
+                <Button
+                    android:id="@+id/buttonfirst"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/bg_login_button"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@string/next"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/et_layout_register"
+                    app:layout_constraintStart_toStartOf="@+id/et_layout_register"
+                    app:layout_constraintTop_toBottomOf="@+id/et_layout_register"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_layout_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_isregistered"
+                    tools:layout_editor_absoluteX="20dp">>
+
+                    <EditText
+                        android:id="@+id/et_register"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:hint="@string/registrationno"
+                        android:textSize="@dimen/sp_14" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ProgressBar
+                    android:id="@+id/progressBar1"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:max="5"
+                    android:progress="1"
+                    android:scaleY="2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.rilixtech.CountryCodePicker
+                    android:id="@+id/ccp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/pt_sans_regular"
+                    android:gravity="center_vertical"
+                    app:ccp_arrowSize="16dp"
+                    app:ccp_countryPreference="US"
+                    app:ccp_enablePhoneAutoFormatter="false"
+                    app:ccp_hideNameCode="false"
+                    app:ccp_showFlag="false"
+                    app:ccp_textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/et_layout_phone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_layoutnameofowner"
+                    app:layout_constraintTop_toTopOf="@+id/et_layout_phone" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/tv_isregistered"
+                android:id="@+id/tv_head_register_first"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/isbusinessregistered"
-                android:textSize="@dimen/sp_16"
-                android:textStyle="bold"
-                android:fontFamily="@font/montserrat_bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_layout_phone" />
 
-            <Button
-                android:id="@+id/buttonfirst"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/bg_login_button"
-                android:text="@string/next"
+                android:layout_marginStart="20dp"
                 android:fontFamily="@font/montserrat_bold"
+                android:text="@string/registernewbusiness"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/et_layout_register"
-                app:layout_constraintStart_toStartOf="@+id/et_layout_register"
-                app:layout_constraintTop_toBottomOf="@+id/et_layout_register"
-                app:layout_constraintVertical_bias="1.0" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_layout_register"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="10dp"
-                app:layout_constraintTop_toBottomOf="@+id/tv_isregistered"
-                tools:layout_editor_absoluteX="20dp">>
-
-                <EditText
-                    android:id="@+id/et_register"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_regular"
-                    android:hint="@string/registrationno" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <ProgressBar
-                android:id="@+id/progressBar1"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="0dp"
-                android:scaleY="2"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:max="5"
-                android:progress="1"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_head_left"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.3"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/tv_head_left" />
 
-            <com.rilixtech.CountryCodePicker
-                android:id="@+id/ccp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/pt_sans_regular"
-                android:gravity="center_vertical"
-                app:ccp_arrowSize="16dp"
-                app:ccp_countryPreference="US"
-                app:ccp_enablePhoneAutoFormatter="false"
-                app:ccp_hideNameCode="false"
-                app:ccp_showFlag="false"
-                app:ccp_textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/et_layout_phone"
+            <ImageView
+                android:id="@+id/tv_head_left"
+                android:layout_width="@dimen/dp_20"
+                android:layout_height="@dimen/dp_20"
+                android:layout_marginStart="20dp"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_layoutnameofowner"
-                app:layout_constraintTop_toTopOf="@+id/et_layout_phone" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/back" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
-        <TextView
-            android:id="@+id/tv_head_register_first"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_marginStart="20dp"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="@string/registernewbusiness"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_head_left"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.3"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_head_left" />
-
-        <ImageView
-            android:id="@+id/tv_head_left"
-            android:layout_width="@dimen/dp_30"
-            android:layout_height="@dimen/dp_30"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/back" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

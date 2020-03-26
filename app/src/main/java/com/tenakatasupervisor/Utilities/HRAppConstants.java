@@ -63,6 +63,10 @@ public interface HRAppConstants {
     String URL_HOME="book/supervisor_home";
     String URL_BUSINESSVISIT="book/bussiness_visit";
     String URL_BUSINESSDETAIL="book/business_details";
+    String URL_PROFILE="book/profile";
+    String URL_TRAINING="book/training";
+    String URL_TRAINING_VIEW="book/training_viewDetails";
+    String URL_TRAINING_RATING="book/training_rating";
 
 
     String key_imagepath ="image" ;

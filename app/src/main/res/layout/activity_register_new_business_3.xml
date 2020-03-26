@@ -3,216 +3,227 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:background="@color/colorBlue"
         android:layout_height="match_parent"
-        tools:context=".Activity.ActivityRegisterNewBusiness_3">
-
+        android:fillViewport="true">
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-
+            android:background="@color/colorBlue"
             android:layout_height="match_parent"
-            android:layout_marginTop="100dp"
-            android:background="@drawable/round_corner"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            tools:context=".Activity.ActivityRegisterNewBusiness_3">
 
-            <ProgressBar
-                android:id="@+id/progressBar3"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:max="5"
-                android:scaleY="2"
-                android:progress="3"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
+                android:layout_width="match_parent"
+
+                android:layout_height="match_parent"
+                android:layout_marginTop="70dp"
+                android:background="@drawable/round_corner"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-            <Spinner
-                android:id="@+id/spinner"
+                app:layout_constraintTop_toTopOf="parent">
 
-
-                style="@style/Widget.AppCompat.Spinner.Underlined"
-                android:layout_width="0dp"
-                android:fontFamily="@font/montserrat_regular"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-              android:entries="@array/financialarray"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tv_branches"
-                app:layout_constraintTop_toBottomOf="@+id/tv_branches" />
-
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_branches"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/tv_branches"
-                app:layout_constraintTop_toTopOf="@+id/tv_branches">
-
-                <RadioGroup
-                    android:id="@+id/radioGrouponthird"
-                    android:layout_width="wrap_content"
+                <ProgressBar
+                    android:id="@+id/progressBar3"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="0dp"
-                    android:orientation="horizontal"
+                    android:layout_marginTop="20dp"
+                    android:max="5"
+                    android:progress="3"
+                    android:scaleY="2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <RadioButton
-                        android:id="@+id/radioButtonyes"
+                <Spinner
+                    android:id="@+id/spinner"
+
+
+                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:entries="@array/financialarray"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tv_branches"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_branches" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_branches"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/tv_branches"
+                    app:layout_constraintTop_toTopOf="@+id/tv_branches">
+
+                    <RadioGroup
+                        android:id="@+id/radioGrouponthird"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <RadioButton
+                            android:id="@+id/radioButtonyes"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="30dp"
+                            android:backgroundTint="@color/colorBlue"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:text="@string/yes" />
+
+                        <RadioButton
+                            android:id="@+id/radioButtonNo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:text="@string/no" />
+                    </RadioGroup>
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_layout_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="@+id/spinner"
+                    app:layout_constraintStart_toStartOf="@+id/spinner"
+                    app:layout_constraintTop_toBottomOf="@+id/spinner">>
+
+                    <EditText
+                        android:id="@+id/et_namee"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="30dp"
-                        android:backgroundTint="@color/colorBlue"
                         android:fontFamily="@font/montserrat_regular"
-                        android:text="@string/yes" />
+                        android:hint="@string/name"
+                        android:textSize="14sp" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    <RadioButton
-                        android:id="@+id/radioButtonNo"
+                <TextView
+                    android:id="@+id/tv_business_start_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/underline"
+                    android:drawableEnd="@drawable/calenderdrawabl_right"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:paddingBottom="@dimen/dp_5"
+                    android:text="@string/businessstartdate"
+                    android:textSize="14sp"
+
+                    app:layout_constraintEnd_toEndOf="@+id/tv_capture_documents"
+                    app:layout_constraintStart_toStartOf="@+id/tv_capture_documents"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_capture_documents" />
+
+                <TextView
+                    android:id="@+id/tv_capture_documents"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/underline"
+                    android:drawableEnd="@drawable/calenderdrawabl_right"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:paddingBottom="@dimen/dp_5"
+                    android:text="@string/capturedocuments"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/progressBar3" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_layout_employees"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_business_start_date"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/tv_business_start_date"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_business_start_date">>
+
+                    <EditText
+                        android:id="@+id/et_employees"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_regular"
-                        android:text="@string/no" />
-                </RadioGroup>
-            </LinearLayout>
+                        android:hint="@string/noofemployees"
+                        android:inputType="number"
+                        android:textSize="14sp" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_layout_name"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="20dp"
-                app:layout_constraintEnd_toEndOf="@+id/spinner"
-                app:layout_constraintStart_toStartOf="@+id/spinner"
-                app:layout_constraintTop_toBottomOf="@+id/spinner">>
-
-                <EditText
-                    android:id="@+id/et_namee"
-                    android:layout_width="match_parent"
+                <Button
+                    android:id="@+id/thirdbutton"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_regular"
-                    android:hint="@string/name" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/bg_login_button"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@string/next"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/et_layout_name"
+                    app:layout_constraintStart_toStartOf="@+id/et_layout_name"
+                    app:layout_constraintTop_toBottomOf="@+id/et_layout_name"
+                    app:layout_constraintVertical_bias="1.0" />
 
-            <TextView
-                android:id="@+id/tv_business_start_date"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/underline"
-                android:drawableEnd="@drawable/calenderdrawabl_right"
-                android:paddingBottom="@dimen/dp_5"
-                android:text="@string/businessstartdate"
-                android:fontFamily="@font/montserrat_regular"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="@+id/tv_capture_documents"
-                app:layout_constraintStart_toStartOf="@+id/tv_capture_documents"
-                app:layout_constraintTop_toBottomOf="@+id/tv_capture_documents" />
-
-            <TextView
-                android:id="@+id/tv_capture_documents"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/underline"
-                android:drawableEnd="@drawable/calenderdrawabl_right"
-                android:paddingBottom="@dimen/dp_5"
-                android:text="@string/capturedocuments"
-                android:textSize="18sp"
-                android:fontFamily="@font/montserrat_regular"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/progressBar3" />
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/et_layout_employees"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="30dp"
-                app:layout_constraintEnd_toEndOf="@+id/tv_business_start_date"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/tv_business_start_date"
-                app:layout_constraintTop_toBottomOf="@+id/tv_business_start_date">>
-
-                <EditText
-                    android:id="@+id/et_employees"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/tv_branches"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_regular"
-                    android:hint="@string/noofemployees"
-                    android:inputType="number" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@string/branches"
+                    android:textSize="@dimen/sp_16"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/et_layout_employees"
+                    app:layout_constraintTop_toBottomOf="@+id/et_layout_employees" />
 
-            <Button
-                android:id="@+id/thirdbutton"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/bg_login_button"
-                android:text="@string/next"
-                android:fontFamily="@font/montserrat_bold"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/et_layout_name"
-                app:layout_constraintStart_toStartOf="@+id/et_layout_name"
-                app:layout_constraintTop_toBottomOf="@+id/et_layout_name"
-                app:layout_constraintVertical_bias="1.0" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/tv_branches"
+                android:id="@+id/tv_head_register_third"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:text="@string/branches"
+
+                android:layout_marginStart="20dp"
                 android:fontFamily="@font/montserrat_bold"
-                android:textSize="@dimen/sp_16"
+                android:text="@string/registernewbusiness"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/et_layout_employees"
-                app:layout_constraintTop_toBottomOf="@+id/et_layout_employees" />
+                app:layout_constraintBottom_toBottomOf="@+id/tv_head_left"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_head_left" />
+
+            <ImageView
+                android:id="@+id/tv_head_left"
+                android:layout_width="@dimen/dp_20"
+                android:layout_height="@dimen/dp_20"
+                android:layout_marginStart="20dp"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/back" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
-        <TextView
-            android:id="@+id/tv_head_register_third"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_marginStart="20dp"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="@string/registernewbusiness"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_head_left"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.3"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_head_left" />
-        <ImageView
-            android:id="@+id/tv_head_left"
-            android:layout_width="@dimen/dp_30"
-            android:layout_height="@dimen/dp_30"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/back" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

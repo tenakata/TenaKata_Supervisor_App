@@ -17,6 +17,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.tenakatasupervisor.Activity.ActivityRegisterNewBusiness_1;
 import com.tenakatasupervisor.Activity.ActivityShopDetails;
 import com.tenakatasupervisor.Adapters.HomeAdapter;
@@ -49,6 +53,17 @@ public class FragmentHome extends BaseFragment implements HomeAdapter.RowClick {
                              Bundle savedInstanceState) {
 
         binding = DataBindingUtil.inflate(LayoutInflater.from(getActivity()),R.layout.fragment_home, container, false);
+        binding.tvName.setText(HRPrefManager.getInstance(context).getUserDetail().getResult().getName());
+
+
+
+        Glide.with(this)
+                .load(HRPrefManager.getInstance(context).getUserDetail().getResult().getImage())
+                .apply(new RequestOptions()
+                        .transform(new CircleCrop(),new RoundedCorners(30)).placeholder(R.drawable.avator_profile))
+                .into(binding.ivProfilepic);
+
+
         binding.newbusinessButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,6 +97,7 @@ public class FragmentHome extends BaseFragment implements HomeAdapter.RowClick {
         }
         Authentication.object(context, HRUrlFactory.generateUrlWithVersion(HRAppConstants.URL_HOME),
                 this, jsonObject);
+
     }
 
     @Override

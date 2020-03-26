@@ -94,7 +94,7 @@ public class ActivityMpinRetype extends BaseActivity {
             progressDialog.showDialog(ProgressDialog.DIALOG_CENTERED);
         final JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("user_id", 1);
+            jsonObject.put("user_id", HRPrefManager.getInstance(context).getUserDetail().getResult().getId());
             jsonObject.put("pin", pin);
             jsonObject.put("role", "supervisor");
         } catch (JSONException e) {

@@ -7,6 +7,8 @@ import com.tenakatasupervisor.Models.LoginModel;
 import com.tenakatasupervisor.Models.ModelBusinessVisit;
 import com.tenakatasupervisor.Models.ModelHome;
 import com.tenakatasupervisor.Models.ModelSuccess;
+import com.tenakatasupervisor.Models.TrainingListModel;
+import com.tenakatasupervisor.Models.TrainingViewModel;
 import com.tenakatasupervisor.Utilities.HRAppConstants;
 import com.tenakatasupervisor.Utilities.HRUrlFactory;
 
@@ -28,6 +30,7 @@ public class ResponseParser {
 
                 case HRAppConstants.URL_LOGIN:
                 case HRAppConstants.URL_LOGIN_WITH_MPIN:
+                case HRAppConstants.URL_PROFILE:
                     return App.getInstance().getGson().fromJson(response, LoginModel.class);
 
                 case HRAppConstants.URL_CHECK_USER:
@@ -35,6 +38,7 @@ public class ResponseParser {
                 case HRAppConstants.URL_LOGOUT:
                 case HRAppConstants.URL_SIGN_UP:
                 case HRAppConstants.URL_CREATE_MPIN:
+                case HRAppConstants.URL_TRAINING_RATING:
                     return App.getInstance().getGson().fromJson(response, ModelSuccess.class);
 
                 case HRAppConstants.URL_HOME:
@@ -44,6 +48,10 @@ public class ResponseParser {
                     return  App.getInstance().getGson().fromJson(response,ModelBusinessDetails.class);
                 case HRAppConstants.URL_BUSINESSVISIT :
                     return  App.getInstance().getGson().fromJson(response, ModelBusinessVisit.class);
+                case HRAppConstants.URL_TRAINING :
+                    return App.getInstance().getGson().fromJson(response, TrainingListModel.class);
+                case HRAppConstants.URL_TRAINING_VIEW :
+                    return App.getInstance().getGson().fromJson(response, TrainingViewModel.class);
 
                 default:
                     return null;

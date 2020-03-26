@@ -12,7 +12,9 @@ import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
+import com.chaos.view.PinView;
 import com.tenakatasupervisor.CallBacks.AuthenticationCallBacks;
 import com.tenakatasupervisor.Dialog.ErrorDialog;
 import com.tenakatasupervisor.Dialog.ProgressDialog;
@@ -69,11 +71,18 @@ public class ActivityLoginWithMpin extends AppCompatActivity implements View.OnC
         switch (view.getId()){
             case R.id.viewShowHide:
                 if(binding.viewShowHide.getText().toString().equals("Show")){
-                    binding.firstPinView.setTransformationMethod(new PasswordTransformationMethod());
                     binding.viewShowHide.setText("Hide");
+                   // binding.firstPinView.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                   binding.firstPinView.setInputType(2);
+
+
+
+
                 } else{
-                    binding.firstPinView.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                     binding.viewShowHide.setText("Show");
+                  //  binding.firstPinView.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    binding.firstPinView.setInputType(18);
+
                 }
                 break;
         }
@@ -99,7 +108,7 @@ public class ActivityLoginWithMpin extends AppCompatActivity implements View.OnC
     @Override
     public void onErrorCallBack(String error) {
         if (!isFinishing()) progressDialog.dismiss();
-        ErrorDialog.errorDialog(context, getString(R.string.app_name), error);
+        ErrorDialog.errorDialog(context, getString(R.string.app_name), "Wrong mPin");
     }
 
     @Override
