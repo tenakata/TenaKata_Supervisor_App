@@ -39,27 +39,23 @@ import java.util.Map;
 public class ActivityRegisterNewBusiness_5 extends BaseActivity {
     ActivityRegisterNewBusiness5Binding binding;
     private ProgressDialog progressDialog;
-     JSONObject parameters;
-    String business_name,name,phone,country_code,location,role,image,owner_name,business_registered,registration_no,gender,
-            activities,business_date,no_of_employees,branches,financial_institution,any_loan,loan_amount,loan_purpose;
+    JSONObject parameters;
+    String business_name, name, phone, country_code, location, role, image, owner_name, business_registered, registration_no, gender,
+            activities, business_date, no_of_employees, branches, financial_institution, any_loan, loan_amount, loan_purpose;
     Context context;
     Intent intent;
-    StringBuilder mcq1result=new StringBuilder();
-    StringBuilder mcq2result=new StringBuilder();
-   StringBuilder mcq3result=new StringBuilder();
-
-
-
-
+    StringBuilder mcq1result = new StringBuilder();
+    StringBuilder mcq2result = new StringBuilder();
+    StringBuilder mcq3result = new StringBuilder();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding= DataBindingUtil.setContentView(this,R.layout.activity_register_new_business_5);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_register_new_business_5);
         progressDialog = new ProgressDialog(context);
-        context=this;
-        intent=getIntent();
+        context = this;
+        intent = getIntent();
         binding.tvHeadLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,17 +68,15 @@ public class ActivityRegisterNewBusiness_5 extends BaseActivity {
 
     @Override
     public void onClick(int viewId, View view) {
-        switch (view.getId()){
-            case R.id.submitbutton :
+        switch (view.getId()) {
+            case R.id.submitbutton:
 
                 try {
-                    if(pageValidation()){
+                    if (pageValidation()) {
                         apiHit2();
                         break;
-                    }
-                    else
-                    {
-                        HRLogger.showSneckbar(binding.constraintLayout,"Check atlease one box from all MCQs");
+                    } else {
+                        HRLogger.showSneckbar(binding.constraintLayout, "Check at least one box from all MCQs");
                     }
 
                 } catch (Exception e) {
@@ -96,48 +90,36 @@ public class ActivityRegisterNewBusiness_5 extends BaseActivity {
 
     private void apiHit2() {
 
-        String business_name=intent.getStringExtra(HRAppConstants.key_businessname);
-        String name=intent.getStringExtra(HRAppConstants.key_name);
-        String phone=intent.getStringExtra(HRAppConstants.key_mobilenumber);
-        String location=intent.getStringExtra(HRAppConstants.key_spinnershoplocation);
-        String country_code=intent.getStringExtra(HRAppConstants.key_country_code);
-        String name_of_owner=intent.getStringExtra(HRAppConstants.key_nameofowner);
-        String is_registered=intent.getStringExtra(HRAppConstants.key_isbusinessregistered);
-        String registration_no=intent.getStringExtra(HRAppConstants.key_registrationno);
-        String gender=intent.getStringExtra(HRAppConstants.key_gender);
-        String core_business=intent.getStringExtra(HRAppConstants.key_corebusiness);
-        String activities=intent.getStringExtra(HRAppConstants.key_activities);
-        String business_start_date=intent.getStringExtra(HRAppConstants.key_businessstartdate);
-        String branches=intent.getStringExtra(HRAppConstants.key_radiobranches);
-        String no_of_employees=intent.getStringExtra(HRAppConstants.key_noofemployees);
-        String anyloan=intent.getStringExtra(HRAppConstants.key_takenanyloan);
-        String financial_institution=intent.getStringExtra(HRAppConstants.key_financial_institution);
-        String receive_payments=mcq1result.toString();
-        String make_payments=mcq2result.toString();
-        String business_funding=mcq3result.toString();
-        String loan_purpose=intent.getStringExtra(HRAppConstants.key_loanpurpose);
-        String loan_amount=intent.getStringExtra(HRAppConstants.key_loanamount);
-         String path=intent.getStringExtra(HRAppConstants.key_imagepath);
-       String id= HRPrefManager.getInstance(context).getUserDetail().getResult().getId();
+        String business_name = intent.getStringExtra(HRAppConstants.key_businessname);
+        String name = intent.getStringExtra(HRAppConstants.key_name);
+        String phone = intent.getStringExtra(HRAppConstants.key_mobilenumber);
+        String location = intent.getStringExtra(HRAppConstants.key_spinnershoplocation);
+        String country_code = intent.getStringExtra(HRAppConstants.key_country_code);
+        String name_of_owner = intent.getStringExtra(HRAppConstants.key_nameofowner);
+        String is_registered = intent.getStringExtra(HRAppConstants.key_isbusinessregistered);
+        String registration_no = intent.getStringExtra(HRAppConstants.key_registrationno);
+        String gender = intent.getStringExtra(HRAppConstants.key_gender);
+        String core_business = intent.getStringExtra(HRAppConstants.key_corebusiness);
+        String activities = intent.getStringExtra(HRAppConstants.key_activities);
+        String business_start_date = intent.getStringExtra(HRAppConstants.key_businessstartdate);
+        String branches = intent.getStringExtra(HRAppConstants.key_radiobranches);
+        String no_of_employees = intent.getStringExtra(HRAppConstants.key_noofemployees);
+        String anyloan = intent.getStringExtra(HRAppConstants.key_takenanyloan);
+        String financial_institution = intent.getStringExtra(HRAppConstants.key_financial_institution);
+        String receive_payments = mcq1result.toString();
+        String make_payments = mcq2result.toString();
+        String business_funding = mcq3result.toString();
+        String loan_purpose = intent.getStringExtra(HRAppConstants.key_loanpurpose);
+        String loan_amount = intent.getStringExtra(HRAppConstants.key_loanamount);
+        String path = intent.getStringExtra(HRAppConstants.key_imagepath);
+        String id = HRPrefManager.getInstance(context).getUserDetail().getResult().getId();
 
 
-        Authentication.signUpApi(HRUrlFactory.generateUrlWithVersion(HRAppConstants.URL_SIGN_UP),this,id,business_name,name,phone,location,
-                country_code,name_of_owner,is_registered,registration_no,gender,core_business,activities,business_start_date,branches,no_of_employees,
-                anyloan,financial_institution,receive_payments,make_payments,business_funding,loan_purpose,loan_amount,path);
+        Authentication.signUpApi(HRUrlFactory.generateUrlWithVersion(HRAppConstants.URL_SIGN_UP), this, id, business_name, name, phone, location,
+                country_code, name_of_owner, is_registered, registration_no, gender, core_business, activities, business_start_date, branches, no_of_employees,
+                anyloan, financial_institution, receive_payments, make_payments, business_funding, loan_purpose, loan_amount, path);
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     private boolean pageValidation() {
@@ -147,29 +129,29 @@ public class ActivityRegisterNewBusiness_5 extends BaseActivity {
         mcq1result.append(" ");
         mcq2result.append(" ");
         mcq3result.append(" ");
-        int countfor1=0, countfor2=0,countfor3=0;
-        Boolean value=false;
-        if (binding.op1a.isChecked()){
+        int countfor1 = 0, countfor2 = 0, countfor3 = 0;
+        Boolean value = false;
+        if (binding.op1a.isChecked()) {
 
-           mcq1result.append(binding.op1a.getText().toString());
-
-            countfor1++;
-        }
-        if (binding.op1b.isChecked()){
-
-
-           mcq1result.append(binding.op1b.getText().toString());
+            mcq1result.append(binding.op1a.getText().toString());
 
             countfor1++;
         }
-        if (binding.op1c.isChecked()){
+        if (binding.op1b.isChecked()) {
 
 
-           mcq1result.append(binding.op1c.getText().toString());
+            mcq1result.append(binding.op1b.getText().toString());
 
             countfor1++;
         }
-        if (binding.op1d.isChecked()){
+        if (binding.op1c.isChecked()) {
+
+
+            mcq1result.append(binding.op1c.getText().toString());
+
+            countfor1++;
+        }
+        if (binding.op1d.isChecked()) {
 
 
             mcq1result.append(binding.op1d.getText().toString());
@@ -178,46 +160,45 @@ public class ActivityRegisterNewBusiness_5 extends BaseActivity {
         }
 
 
-        if (binding.op2a.isChecked()){
+        if (binding.op2a.isChecked()) {
 
             mcq2result.append(binding.op2a.getText().toString());
             countfor2++;
         }
-        if (binding.op2b.isChecked()){
+        if (binding.op2b.isChecked()) {
 
             mcq2result.append(binding.op2b.getText().toString());
             countfor2++;
         }
-        if (binding.op2c.isChecked()){
+        if (binding.op2c.isChecked()) {
 
             mcq2result.append(binding.op2c.getText().toString());
             countfor2++;
         }
-        if (binding.op2d.isChecked()){
+        if (binding.op2d.isChecked()) {
 
             mcq2result.append(binding.op2d.getText().toString());
             countfor2++;
         }
 
 
-
-        if (binding.op3a.isChecked()){
+        if (binding.op3a.isChecked()) {
 
             mcq3result.append(binding.op3a.getText().toString());
             countfor3++;
         }
-        if (binding.op3b.isChecked()){
+        if (binding.op3b.isChecked()) {
 
             mcq3result.append(binding.op3b.getText().toString());
 
             countfor3++;
         }
 
-       if (countfor1>=1 && countfor2>=1 && countfor3>=1){
+        if (countfor1 >= 1 && countfor2 >= 1 && countfor3 >= 1) {
 
-            value=true;
+            value = true;
             return value;
-       }
+        }
 
         return value;
 
@@ -251,7 +232,7 @@ public class ActivityRegisterNewBusiness_5 extends BaseActivity {
 
             Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_LONG).show();
 
-            Intent intent=new Intent(this,ActivityDashboard.class);
+            Intent intent = new Intent(this, ActivityDashboard.class);
             startActivity(intent);
 
             finish();
@@ -259,14 +240,13 @@ public class ActivityRegisterNewBusiness_5 extends BaseActivity {
         }
 
 
-
     }
 
 
     @Override
     public void onTaskError(String errorMsg) {
-       super.onTaskError(errorMsg);
-       // ErrorDialog.errorDialog(this,getString(R.string.app_name), errorMsg);
+        super.onTaskError(errorMsg);
+        // ErrorDialog.errorDialog(this,getString(R.string.app_name), errorMsg);
 
     }
 
