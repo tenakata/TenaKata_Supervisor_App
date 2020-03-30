@@ -1320,6 +1320,7 @@ public class Authentication {
     public static void object(final Context context, final String url,
                               final BaseCallBacks callBacks,
                               final JSONObject jsonObject) {
+        callBacks.showLoader();
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {

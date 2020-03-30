@@ -95,6 +95,7 @@ public class FragmentBusinessVisit extends BaseFragment implements  View.OnClick
         final DatePickerDialog datePicker= new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month=month+1;
                 binding.etLayoutCurrentdate.setText(dayOfMonth+"-"+month+"-"+year);
             }
         },year,month,date);

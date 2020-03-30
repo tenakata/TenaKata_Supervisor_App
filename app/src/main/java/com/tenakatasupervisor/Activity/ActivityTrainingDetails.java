@@ -19,6 +19,7 @@ import com.tenakatasupervisor.Models.TrainingViewModel;
 import com.tenakatasupervisor.Network.Authentication;
 import com.tenakatasupervisor.R;
 import com.tenakatasupervisor.Utilities.HRAppConstants;
+import com.tenakatasupervisor.Utilities.HRLogger;
 import com.tenakatasupervisor.Utilities.HRUrlFactory;
 import com.tenakatasupervisor.databinding.ActivityTrainingDetailsBinding;
 
@@ -51,7 +52,9 @@ import java.io.IOException;
             binding.trainingNextbutton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    hitApiRating();
+                   if (pagevalidation()) {
+                       hitApiRating();
+                   }
                 }
             });
 
@@ -60,8 +63,18 @@ import java.io.IOException;
 
 
         }
+        private boolean pagevalidation() {
+
+            if(binding.ratingBar6.getRating()<.5){
+                HRLogger.showSneckbar(binding.constraintLayout,"Please Fill Rating Bar");
+                return false;
+            }
+
+            return true;
+        }
 
         private void hitApi() {
+            showLoader();
 
             final JSONObject jsonObject = new JSONObject();
             try {
@@ -78,6 +91,7 @@ import java.io.IOException;
         }
 
         private void hitApiRating() {
+            showLoader();
 
             final JSONObject jsonObject = new JSONObject();
             try {

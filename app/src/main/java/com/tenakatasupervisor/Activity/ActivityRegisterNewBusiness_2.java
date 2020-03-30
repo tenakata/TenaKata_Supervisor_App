@@ -65,6 +65,7 @@ ActivityRegisterNewBusiness2Binding binding;
 
 
 
+
     public void getAddressOfLocation(double latitude, double longitude) {
         Geocoder geocoder;
         List<Address> addresses;
