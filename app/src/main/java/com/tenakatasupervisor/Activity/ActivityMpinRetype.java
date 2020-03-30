@@ -61,7 +61,6 @@ public class ActivityMpinRetype extends BaseActivity {
                 if (charSequence.length() == 4) {
                     String retypedpin = binding.firstPinView.getText().toString();
                     if (retypedpin.equals(pin)) {
-                        Toast.makeText(getApplicationContext(), "password matched", Toast.LENGTH_LONG).show();
                         apiSetmPin(retypedpin);
                     } else {
                         Toast.makeText(getApplicationContext(), "password not matched", Toast.LENGTH_LONG).show();

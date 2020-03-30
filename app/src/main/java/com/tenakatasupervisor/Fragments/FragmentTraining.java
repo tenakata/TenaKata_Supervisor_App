@@ -3,6 +3,7 @@ package com.tenakatasupervisor.Fragments;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import com.tenakatasupervisor.Activity.ActivityTrainingDetails;
 import com.tenakatasupervisor.Adapters.TrainingBaseAdapter;
 import com.tenakatasupervisor.Base.BaseFragment;
+import com.tenakatasupervisor.Dialog.ProgressDialog;
 import com.tenakatasupervisor.Models.TrainingDetailModel;
 import com.tenakatasupervisor.Models.TrainingListModel;
 import com.tenakatasupervisor.Network.Authentication;
@@ -41,6 +43,8 @@ public class FragmentTraining extends BaseFragment implements TrainingBaseAdapte
     private TrainingBaseAdapter adapter;
     private int currentPage = 1;
     private String per_page = "10";
+    ProgressDialog progressDialog;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -54,6 +58,7 @@ public class FragmentTraining extends BaseFragment implements TrainingBaseAdapte
         super.onViewCreated(view, savedInstanceState);
 
         context = getActivity();
+        progressDialog = new ProgressDialog(context);
         hitApi();
     }
 
@@ -61,8 +66,9 @@ public class FragmentTraining extends BaseFragment implements TrainingBaseAdapte
 
         final JSONObject jsonObject = new JSONObject();
         try {
-
-
+            if (!((Activity)context).isFinishing() && !progressDialog.isShowing()){
+                progressDialog.showDialog(ProgressDialog.DIALOG_CENTERED);
+            }
 
             jsonObject.put("page", "1");
             jsonObject.put("Perpage", "10");
@@ -80,7 +86,9 @@ public class FragmentTraining extends BaseFragment implements TrainingBaseAdapte
 
     @Override
     public void onTaskSuccess(Object responseObj) {
-        dismissLoader();
+        if (!((Activity)context).isFinishing() && progressDialog.isShowing()){
+            progressDialog.dismiss();
+        }
         if (!(responseObj instanceof TrainingListModel)) {
             return;
         }
@@ -104,6 +112,9 @@ public class FragmentTraining extends BaseFragment implements TrainingBaseAdapte
     @Override
     public void onTaskError(String errorMsg) {
         super.onTaskError(errorMsg);
+        if (!((Activity)context).isFinishing() && progressDialog.isShowing()){
+            progressDialog.dismiss();
+        }
     }
 
     @Override

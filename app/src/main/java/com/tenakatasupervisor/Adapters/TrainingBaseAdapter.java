@@ -14,6 +14,9 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.tenakatasupervisor.Activity.ActivityTrainingDetails;
 import com.tenakatasupervisor.Models.TrainingDetailModel;
 import com.tenakatasupervisor.Models.TrainingListModel;
@@ -67,6 +70,13 @@ public class TrainingBaseAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
+
+        Glide.with(context).load(R.drawable.placeholder)
+                .apply(new RequestOptions()
+                        .placeholder(R.drawable.placeholder)
+                        .transform(new RoundedCorners(10)))
+                .into(holder.binding.ivVideo);
+
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

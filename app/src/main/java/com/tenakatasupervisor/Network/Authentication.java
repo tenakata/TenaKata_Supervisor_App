@@ -704,6 +704,7 @@ public class Authentication {
                             || resObj.getInt(HRAppConstants.kResponseCode) == HRAppConstants.kResponseUserUpdated
                             || resObj.getInt(HRAppConstants.kResponseCode) == HRAppConstants.kUpdateDevice) {
                         Object r = ResponseParser.parse(url, response.toString());
+
                         if (r != null) {
                             if (r instanceof Boolean) {
                                 callBacks.onSuccessCallback((boolean) r);
@@ -1617,7 +1618,10 @@ public class Authentication {
                         } else {
                             callBacks.onTaskError(null);
                         }
-                    } else if (resObj.has(HRAppConstants.kResponseCode) &&
+                    }else if (resObj.has(HRAppConstants.kResponseCode) &&
+                            resObj.getInt(HRAppConstants.kResponseCode) == HRAppConstants.kResponseContactNotExist) {
+                        callBacks.onTaskError(resObj.getString(HRAppConstants.kResponseMsg));
+                    }else if (resObj.has(HRAppConstants.kResponseCode) &&
                             resObj.getInt(HRAppConstants.kResponseCode) == HRAppConstants.kResponseUpdate) {
                         callBacks.onAppNeedUpdate(resObj.getString(HRAppConstants.kResponseMsg));
                     } else if (resObj.has(HRAppConstants.kResponseCode) &&

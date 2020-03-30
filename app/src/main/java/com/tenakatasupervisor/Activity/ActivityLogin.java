@@ -5,10 +5,19 @@ import androidx.databinding.DataBindingUtil;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.error.AuthFailureError;
+import com.android.volley.error.VolleyError;
+import com.android.volley.request.JsonObjectRequest;
+import com.android.volley.request.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.rilixtech.Country;
 import com.rilixtech.CountryCodePicker;
 import com.tenakatasupervisor.CallBacks.AuthenticationCallBacks;
@@ -27,6 +36,9 @@ import com.tenakatasupervisor.databinding.ActivityLoginBinding;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.tenakatasupervisor.Dialog.ProgressDialog.progressDialog;
 
@@ -58,7 +70,7 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
         binding.viewLoginBtn.setOnClickListener(this);
         binding.viewForgotPassword.setOnClickListener(this);
 
-        binding.viewMobile.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+       /* binding.viewMobile.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
                 if (hasFocus){
@@ -69,7 +81,7 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
                 }
 
             }
-        });
+        });*/
 
     }
 
@@ -81,6 +93,7 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
                 if (isValidate(view)){
                     apiLogin();
                 }
+
                 break;
             case R.id.viewForgotPassword:
                 startActivity(IntentHelper.getVerifyMobileNumber(context));
@@ -97,7 +110,7 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
             HRPrefManager.getInstance(context).setUserDetail((LoginModel) response);
             HRPrefManager.getInstance(context).setKeyIsLoggedIn(true);
             startActivity(IntentHelper.getDashboard(context));
-            finish();
+            finishAffinity();
         }
     }
 
@@ -159,4 +172,7 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
         Authentication.apiOfLogin(context, HRUrlFactory.generateUrlWithVersion(HRAppConstants.URL_LOGIN),
                 this, jsonObject, HRUrlFactory.getDefaultHeaders());
     }
+
+
+
 }
