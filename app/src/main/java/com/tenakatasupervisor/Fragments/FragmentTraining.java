@@ -28,6 +28,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 
 import org.json.JSONException;
@@ -86,6 +87,7 @@ public class FragmentTraining extends BaseFragment implements TrainingBaseAdapte
 
     @Override
     public void onTaskSuccess(Object responseObj) {
+
         if (!((Activity)context).isFinishing() && progressDialog.isShowing()){
             progressDialog.dismiss();
         }

@@ -131,7 +131,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:hint="@string/location"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/markerLocation"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_comments">
 
@@ -141,10 +141,10 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:fontFamily="@font/pt_sans_regular"
-                android:textSize="@dimen/sp_18"
                 android:inputType="text"
                 android:paddingTop="@dimen/dp_5"
-                android:paddingBottom="@dimen/dp_5" />
+                android:paddingBottom="@dimen/dp_5"
+                android:textSize="@dimen/sp_18" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -183,6 +183,16 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
         </View>
+
+        <ImageView
+            android:id="@+id/markerLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_5"
+            app:layout_constraintBottom_toBottomOf="@+id/underline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textInputLayout2"
+            app:srcCompat="@drawable/location_icon" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

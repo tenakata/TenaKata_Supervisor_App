@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.media.MediaBrowserCompat;
 import android.util.Log;
@@ -15,19 +16,31 @@ import android.widget.Toast;
 
 import com.rilixtech.Country;
 import com.rilixtech.CountryCodePicker;
+import com.tenakatasupervisor.Base.BaseActivity;
+import com.tenakatasupervisor.Base.BaseFragment;
+import com.tenakatasupervisor.Models.ModelSuccess;
+import com.tenakatasupervisor.Network.Authentication;
 import com.tenakatasupervisor.R;
 import com.tenakatasupervisor.Utilities.HRAppConstants;
 import com.tenakatasupervisor.Utilities.HRLogger;
+import com.tenakatasupervisor.Utilities.HRUrlFactory;
 import com.tenakatasupervisor.Utilities.HRValidationHelper;
 import com.tenakatasupervisor.databinding.ActivityLoginBinding;
 import com.tenakatasupervisor.databinding.ActivityRegisterNewBusiness1Binding;
-public class ActivityRegisterNewBusiness_1 extends AppCompatActivity implements View.OnClickListener {
+public class ActivityRegisterNewBusiness_1 extends BaseActivity implements View.OnClickListener {
 RadioGroup radioGroup;
 RadioButton radioButton;
 int selectedradiobuttonid;
 int radioflag=0;
+Boolean checkvalidation=false;
     private String countryCode;
     private ActivityRegisterNewBusiness1Binding binding;
+
+    @Override
+    public void onClick(int viewId, View view) {
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,7 +129,7 @@ int radioflag=0;
         switch (v.getId()){
             case R.id.buttonfirst:
                 if (pagevalidation()){
-                    goToNextActivity();
+                   checkValidation();
                 }
                 break;
             case R.id.radioButtonyes:
@@ -132,5 +145,53 @@ int radioflag=0;
                 binding.etLayoutRegister.setVisibility(View.GONE);
                 break;
         }
+    }
+
+    private void checkValidation() {
+        String business_name=binding.etBusinessname.getText().toString();
+        String phone=binding.etPhoned.getText().toString();
+        String registration_no=binding.etRegister.getText().toString();
+        String business_registered=radioButton.getText().toString();
+        Authentication.signUpDetailValidation(HRUrlFactory.generateUrlWithVersion(HRAppConstants.URL_CHECKVALIDATION),this,business_name,registration_no,phone,business_registered);
+
+    }
+
+    @Override
+    public void onTaskSuccess(Object responseObj) {
+        super.onTaskSuccess(responseObj);
+        if (responseObj instanceof ModelSuccess){
+            ModelSuccess model=(ModelSuccess) responseObj;
+           if (model.gettMessage().equals("ok")){
+               goToNextActivity();
+
+        }
+        }
+
+
+    }
+
+    @Override
+    public void onTaskError(String errorMsg) {
+        super.onTaskError(errorMsg);
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+
     }
 }

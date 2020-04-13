@@ -67,7 +67,10 @@ public interface HRAppConstants {
     String URL_TRAINING="book/training";
     String URL_TRAINING_VIEW="book/training_viewDetails";
     String URL_TRAINING_RATING="book/training_rating";
+    String URL_CHECKVALIDATION="book/check_validation";
 
 
     String key_imagepath ="image" ;
+    String key_latitude = "latitude";
+    String key_longitude = "longitude";
 }

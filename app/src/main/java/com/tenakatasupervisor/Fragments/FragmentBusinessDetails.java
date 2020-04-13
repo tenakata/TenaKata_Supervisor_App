@@ -195,6 +195,7 @@ public class FragmentBusinessDetails extends BaseFragment  {
         }
     }
 
+
     @Override
     public void onTaskError(String errorMsg) {
         super.onTaskError(errorMsg);

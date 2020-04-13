@@ -1321,7 +1321,7 @@ public class Authentication {
     public static void object(final Context context, final String url,
                               final BaseCallBacks callBacks,
                               final JSONObject jsonObject) {
-        callBacks.showLoader();
+       // callBacks.showLoader();
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -1590,7 +1590,7 @@ public class Authentication {
     String business_funding,
     String loan_purpose,
     String loan_amount,
-    String path) {
+    String path,String latitude,String longitude) {
         if (HRNetworkUtils.isNetworkAvailable()) {
            callBacks.showLoader();
         } else {
@@ -1685,6 +1685,8 @@ public class Authentication {
         request.addStringParam(HRAppConstants.key_busniness_funding,business_funding);
         request.addStringParam(HRAppConstants.key_loanpurpose,loan_purpose);
         request.addStringParam(HRAppConstants.key_loanamount,loan_amount);
+        request.addStringParam(HRAppConstants.key_latitude,latitude);
+        request.addStringParam(HRAppConstants.key_longitude,longitude);
         if (path != null) {
             if (android.util.Patterns.WEB_URL.matcher(path).matches()) {
                 request.addStringParam(HRAppConstants.key_imagepath, path);
@@ -1696,6 +1698,93 @@ public class Authentication {
         App.getInstance().getRequestQueue().getCache().clear();
        App.getInstance().getRequestQueue().add(request);
     }
+
+
+    public static void signUpDetailValidation( String Url, @NonNull final BaseCallBacks callBacks,String business_name,
+                                  String registration_no,
+                                  String phone,String business_registered) {
+        if (HRNetworkUtils.isNetworkAvailable()) {
+            callBacks.showLoader();
+        } else {
+            callBacks.onInternetNotFound();
+            return;
+        }
+
+        final String url = Url;
+
+        SimpleMultiPartRequest request = new SimpleMultiPartRequest(Request.Method.POST,
+                url, new Response.Listener<String>() {
+            public void onResponse(String response) {
+                if (HRUrlFactory.isModeDevelopment()) {
+                    print(url, String.valueOf(response), "", "");
+                }
+                try {
+                    JSONObject resObj = new JSONObject(response);
+                    if (resObj.has(HRAppConstants.kResponseCode) &&
+                            resObj.getInt(HRAppConstants.kResponseCode) == HRAppConstants.kResponseOK
+                            || resObj.getInt(HRAppConstants.kResponseCode) == HRAppConstants.kResponseSignUp
+                            || resObj.getInt(HRAppConstants.kResponseCode) == HRAppConstants.kResponseUserUpdated) {
+                        Object r = ResponseParser.parse(url, response);
+                        if (r != null) {
+                            callBacks.onTaskSuccess(r);
+                        } else {
+                            callBacks.onTaskError(null);
+                        }
+                    }else if (resObj.has(HRAppConstants.kResponseCode) &&
+                            resObj.getInt(HRAppConstants.kResponseCode) == HRAppConstants.kResponseContactNotExist) {
+                        callBacks.onTaskError(resObj.getString(HRAppConstants.kResponseMsg));
+                    }else if (resObj.has(HRAppConstants.kResponseCode) &&
+                            resObj.getInt(HRAppConstants.kResponseCode) == HRAppConstants.kResponseUpdate) {
+                        callBacks.onAppNeedUpdate(resObj.getString(HRAppConstants.kResponseMsg));
+                    } else if (resObj.has(HRAppConstants.kResponseCode) &&
+                            resObj.getInt(HRAppConstants.kResponseCode) == HRAppConstants.kResponseForceUpdate) {
+                        callBacks.onAppNeedForceUpdate(resObj.getString(HRAppConstants.kResponseMsg));
+                    } else if (resObj.has(HRAppConstants.kResponseCode) &&
+                            resObj.getInt(HRAppConstants.kResponseCode) == HRAppConstants.kResponseSessionExpire) {
+                        callBacks.onSessionExpire(resObj.getString(HRAppConstants.kResponseMsg));
+                    } else {
+                        if (resObj.has(HRAppConstants.kResponseMsg)) {
+                            callBacks.onTaskError(resObj.getString(HRAppConstants.kResponseMsg));
+                        } else {
+                            callBacks.onTaskError(null);
+                        }
+                    }
+                } catch (JSONException e) {
+                    callBacks.onTaskError(e.toString());
+                }
+            }
+        }, new Response.ErrorListener() {
+            public void onErrorResponse(VolleyError error) {
+                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                    callBacks.onTaskError(App.getInstance().getString(R.string.txt_connection_error));
+                } else if (error instanceof AuthFailureError) {
+                    callBacks.onTaskError(App.getInstance().getString(R.string.txt_went_wrong));
+                } else if (error instanceof ServerError) {
+                    callBacks.onTaskError(App.getInstance().getString(R.string.text_server_error));
+                } else if (error instanceof NetworkError) {
+                    callBacks.onTaskError(App.getInstance().getString(R.string.txt_connection_error));
+                } else if (error instanceof ParseError) {
+                    callBacks.onTaskError(App.getInstance().getString(R.string.txt_parsing_error));
+                } else {
+                    callBacks.onTaskError(App.getInstance().getString(R.string.txt_went_wrong));
+                }
+            }
+        }) {
+            public Map<String, String> getHeaders() {
+                return HRUrlFactory.getAppHeaders();
+            }
+        };
+        request.addStringParam("registation_no",registration_no);
+        request.addStringParam("phone",phone);
+        request.addStringParam("business_name",business_name);
+        request.addStringParam("business_registered",business_registered);
+        App.getInstance().getRequestQueue().getCache().clear();
+        App.getInstance().getRequestQueue().add(request);
+    }
+
+
+
+
 
 
 

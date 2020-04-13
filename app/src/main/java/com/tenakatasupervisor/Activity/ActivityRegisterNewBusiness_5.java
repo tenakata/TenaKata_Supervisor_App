@@ -64,6 +64,8 @@ public class ActivityRegisterNewBusiness_5 extends BaseActivity {
         });
 
         binding.submitbutton.setOnClickListener(this);
+
+
     }
 
     @Override
@@ -74,6 +76,7 @@ public class ActivityRegisterNewBusiness_5 extends BaseActivity {
                 try {
                     if (pageValidation()) {
                         apiHit2();
+                        //Toast.makeText(this,mcq3result,Toast.LENGTH_SHORT).show();
                         break;
                     } else {
                         HRLogger.showSneckbar(binding.constraintLayout, "Check at least one box from all MCQs");
@@ -113,11 +116,12 @@ public class ActivityRegisterNewBusiness_5 extends BaseActivity {
         String loan_amount = intent.getStringExtra(HRAppConstants.key_loanamount);
         String path = intent.getStringExtra(HRAppConstants.key_imagepath);
         String id = HRPrefManager.getInstance(context).getUserDetail().getResult().getId();
-
+        String latitude=intent.getStringExtra(HRAppConstants.key_latitude);
+                String longitude=intent.getStringExtra(HRAppConstants.key_longitude);
 
         Authentication.signUpApi(HRUrlFactory.generateUrlWithVersion(HRAppConstants.URL_SIGN_UP), this, id, business_name, name, phone, location,
                 country_code, name_of_owner, is_registered, registration_no, gender, core_business, activities, business_start_date, branches, no_of_employees,
-                anyloan, financial_institution, receive_payments, make_payments, business_funding, loan_purpose, loan_amount, path);
+                anyloan, financial_institution, receive_payments, make_payments, business_funding, loan_purpose, loan_amount, path,latitude,longitude);
 
     }
 
@@ -132,66 +136,125 @@ public class ActivityRegisterNewBusiness_5 extends BaseActivity {
         int countfor1 = 0, countfor2 = 0, countfor3 = 0;
         Boolean value = false;
         if (binding.op1a.isChecked()) {
+            if(mcq1result.length()<2){
+                mcq1result.append(binding.op1a.getText().toString());
+                countfor1++;
+            }
+            else {
+                mcq1result.append(","+binding.op1a.getText().toString());
+                countfor1++;
+            }
 
-            mcq1result.append(binding.op1a.getText().toString());
-
-            countfor1++;
         }
         if (binding.op1b.isChecked()) {
 
-
-            mcq1result.append(binding.op1b.getText().toString());
-
-            countfor1++;
+    //Toast.makeText(this,String.valueOf(mcq1result.length()),Toast.LENGTH_SHORT).show();
+            if(mcq1result.length()<2){
+                mcq1result.append(binding.op1b.getText().toString());
+                countfor1++;
+            }
+            else {
+                mcq1result.append(","+binding.op1b.getText().toString());
+                countfor1++;
+            }
         }
         if (binding.op1c.isChecked()) {
 
 
-            mcq1result.append(binding.op1c.getText().toString());
-
-            countfor1++;
+            if(mcq1result.length()<2){
+                mcq1result.append(binding.op1c.getText().toString());
+                countfor1++;
+            }
+            else {
+                mcq1result.append(","+binding.op1c.getText().toString());
+                countfor1++;
+            }
         }
         if (binding.op1d.isChecked()) {
 
-
-            mcq1result.append(binding.op1d.getText().toString());
-
-            countfor1++;
+            if(mcq1result.length()<2){
+                mcq1result.append(binding.op1d.getText().toString());
+                countfor1++;
+            }
+            else {
+                mcq1result.append(","+binding.op1d.getText().toString());
+                countfor1++;
+            }
         }
 
 
         if (binding.op2a.isChecked()) {
 
-            mcq2result.append(binding.op2a.getText().toString());
-            countfor2++;
+
+            if(mcq2result.length()<2){
+                mcq2result.append(binding.op2a.getText().toString());
+                countfor2++;
+            }
+            else {
+                mcq2result.append(","+binding.op2a.getText().toString());
+                countfor2++;
+            }
+
+
         }
         if (binding.op2b.isChecked()) {
 
-            mcq2result.append(binding.op2b.getText().toString());
-            countfor2++;
+            if(mcq2result.length()<2){
+                mcq2result.append(binding.op2b.getText().toString());
+                countfor2++;
+            }
+            else {
+                mcq2result.append(","+binding.op2b.getText().toString());
+                countfor2++;
+            }
         }
         if (binding.op2c.isChecked()) {
 
-            mcq2result.append(binding.op2c.getText().toString());
-            countfor2++;
+            if(mcq2result.length()<2){
+                mcq2result.append(binding.op2c.getText().toString());
+                countfor2++;
+            }
+            else {
+                mcq2result.append(","+binding.op2c.getText().toString());
+                countfor2++;
+            }
         }
         if (binding.op2d.isChecked()) {
 
-            mcq2result.append(binding.op2d.getText().toString());
-            countfor2++;
+            if(mcq2result.length()<2){
+                mcq2result.append(binding.op2d.getText().toString());
+                countfor2++;
+            }
+            else {
+                mcq2result.append(","+binding.op2d.getText().toString());
+                countfor2++;
+            }
         }
 
 
         if (binding.op3a.isChecked()) {
 
-            mcq3result.append(binding.op3a.getText().toString());
-            countfor3++;
+            if(mcq3result.length()<2){
+                mcq3result.append(binding.op3a.getText().toString());
+                countfor3++;
+            }
+            else {
+                mcq3result.append(","+binding.op3a.getText().toString());
+                countfor3++;
+            }
+
+
         }
         if (binding.op3b.isChecked()) {
 
-            mcq3result.append(binding.op3b.getText().toString());
-
-            countfor3++;
+            if(mcq3result.length()<2){
+                mcq3result.append(binding.op3b.getText().toString());
+                countfor3++;
+            }
+            else {
+                mcq3result.append(","+binding.op3b.getText().toString());
+                countfor3++;
+            }
         }
 
         if (countfor1 >= 1 && countfor2 >= 1 && countfor3 >= 1) {

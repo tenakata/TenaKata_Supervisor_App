@@ -11,6 +11,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
@@ -31,6 +33,7 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class ActivityRegisterNewBusiness_3 extends AppCompatActivity implements View.OnClickListener {
@@ -38,6 +41,8 @@ private ActivityRegisterNewBusiness3Binding binding;
 private Intent previntent;
     private String path = null;
 private int radioflag=0;
+    private  String selectedDate= "";
+    private int mYear, mDay, mMonth;
     Boolean value=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +59,6 @@ private int radioflag=0;
         binding.radioButtonyes.setOnClickListener(this);
         binding.radioButtonNo.setOnClickListener(this);
         binding.tvBusinessStartDate.setOnClickListener(this);
-
         binding.tvCaptureDocuments.setOnClickListener(this);
     }
 
@@ -74,16 +78,16 @@ private int radioflag=0;
                                 goToNextActivity();
                             }
                             break;
-            case R.id.radioButtonyes:
-                binding.spinner.setVisibility(View.VISIBLE);
-                binding.etLayoutName.setVisibility(View.VISIBLE);
-                radioflag=0;
+            /*case R.id.radioButtonyes:
+               *//* binding.spinner.setVisibility(View.VISIBLE);
+                binding.etLayoutName.setVisibility(View.VISIBLE);*//*
+               // radioflag=0;
                 break;
             case  R.id.radioButtonNo:
                     radioflag=1;
-                binding.spinner.setVisibility(View.GONE);
-                binding.etLayoutName.setVisibility(View.GONE);
-                break;
+               *//* binding.spinner.setVisibility(View.GONE);
+                binding.etLayoutName.setVisibility(View.GONE);*//*
+                break;*/
 
         }
 
@@ -115,18 +119,42 @@ private int radioflag=0;
 
 
     private void calender() {
-        Calendar calendar=Calendar.getInstance();
-        int year=calendar.get(Calendar.YEAR);
-        int month=calendar.get(Calendar.MONTH);
-        int date=calendar.get(Calendar.DATE);
-        final DatePickerDialog datePicker= new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                month=month+1;
-                binding.tvBusinessStartDate.setText(dayOfMonth+"/"+month+"/"+year);
-            }
-        },year,month,date);
-        datePicker.show();
+        final Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+
+        mYear = year;
+        mMonth = c.get(Calendar.MONTH);
+        mDay = c.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                new DatePickerDialog.OnDateSetListener() {
+
+                    @Override
+                    public void onDateSet(DatePicker view, int year,
+                                          int monthOfYear, int dayOfMonth) {
+
+                        c.set(year, monthOfYear, dayOfMonth);
+
+                        Calendar userAge = new GregorianCalendar(year, monthOfYear, dayOfMonth);
+                        Calendar minAdultAge = new GregorianCalendar();
+                        minAdultAge.add(Calendar.YEAR, 0);
+                        /*if (minAdultAge.before(userAge)) {
+                            selectedDob = null;
+                            binding.tvDob.setText("");
+                            Toast.makeText(context, context.getString(R.string.txt_age_message), Toast.LENGTH_SHORT).show();
+                        } else {
+                            selectedDob = DateFormat.format("yyyy-MM-dd", c.getTimeInMillis()).toString();
+                            binding.tvDob.setText(DateFormat.format("dd-MM-yyyy", c.getTimeInMillis()).toString());
+                        }*/
+
+                        //  selectedDob = DateFormat.format("yyyy-MM-dd", c.getTimeInMillis()).toString();
+                        selectedDate = DateFormat.format("yyyy-MM-dd", c.getTimeInMillis()).toString();
+                        binding.tvBusinessStartDate.setText(DateFormat.format("dd-MM-yyyy", c.getTimeInMillis()).toString());
+
+
+                    }
+                }, mYear, mMonth, mDay);
+        datePickerDialog.show();
     }
 
     private void captureDocuments(){
@@ -162,11 +190,11 @@ private int radioflag=0;
             HRLogger.showSneckbar(binding.constraintLayout,"Please Enter no. of Employees");
             return false;
         }
-        else if(HRValidationHelper.isNull(binding.etNamee.getText().toString()) && radioflag==0){
+        else if(HRValidationHelper.isNull(binding.etNamee.getText().toString())){
             HRLogger.showSneckbar(binding.constraintLayout,"Please Enter Name");
             return false;
         }
-        else if (!HRValidationHelper.isNameValid(binding.etNamee.getText().toString()) && radioflag==0){
+        else if (!HRValidationHelper.isNameValid(binding.etNamee.getText().toString())){
             HRLogger.showSneckbar(binding.constraintLayout,"Please Enter Valid Name");
             return false;
         }
@@ -181,7 +209,7 @@ private int radioflag=0;
     private void goToNextActivity() {
         Intent intent = new Intent(ActivityRegisterNewBusiness_3.this, ActivityRegisterNewBusiness_4.class);
         intent.putExtra(HRAppConstants.key_capturedocuments,binding.tvCaptureDocuments.getText().toString());
-        intent.putExtra(HRAppConstants.key_businessstartdate,binding.tvBusinessStartDate.getText().toString());
+        intent.putExtra(HRAppConstants.key_businessstartdate,selectedDate);
         intent.putExtra(HRAppConstants.key_noofemployees,binding.etEmployees.getText().toString());
         RadioButton radioButton=(RadioButton)findViewById(binding.radioGrouponthird.getCheckedRadioButtonId());
         intent.putExtra(HRAppConstants.key_radiobranches,radioButton.getText().toString());
@@ -200,7 +228,8 @@ private int radioflag=0;
         intent.putExtra(HRAppConstants.key_gender,previntent.getStringExtra(HRAppConstants.key_gender));
         intent.putExtra(HRAppConstants.key_spinnershoplocation,previntent.getStringExtra(HRAppConstants.key_spinnershoplocation));
         intent.putExtra(HRAppConstants.key_corebusiness,previntent.getStringExtra(HRAppConstants.key_corebusiness));
-
+        intent.putExtra(HRAppConstants.key_latitude,previntent.getStringExtra(HRAppConstants.key_latitude));
+        intent.putExtra(HRAppConstants.key_longitude,previntent.getStringExtra(HRAppConstants.key_longitude));
         startActivity(intent);
     }
 

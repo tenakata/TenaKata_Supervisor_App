@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.tenakatasupervisor.R;
 import com.tenakatasupervisor.Utilities.GPSTracker;
 import com.tenakatasupervisor.Utilities.HRAppConstants;
+import com.tenakatasupervisor.Utilities.HRLogger;
 import com.tenakatasupervisor.Utilities.HRValidationHelper;
 import com.tenakatasupervisor.databinding.ActivityRegisterNewBusiness2Binding;
 
@@ -23,9 +24,13 @@ import java.util.Locale;
 
 public class ActivityRegisterNewBusiness_2 extends AppCompatActivity implements View.OnClickListener {
     Button nextbtn;
+
     Intent previntent;
     String address;
     ActivityRegisterNewBusiness2Binding binding;
+    String latitude,longitude;
+    Double lat,lng;
+    Double getLat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +47,17 @@ public class ActivityRegisterNewBusiness_2 extends AppCompatActivity implements 
         binding.spinnergender.getSelectedItem();
         binding.etShopLocation.setOnClickListener(this);
         previntent = getIntent();
+        getLocation();
 
 
+    }
+
+    private void getLocation() {
+        GPSTracker gpsTracker = new GPSTracker(this);
+        Double lat = gpsTracker.getLatitude();
+        Double lng = gpsTracker.getLongitude();
+        latitude=String.valueOf(lat);
+        longitude=String.valueOf(lng);
     }
 
     @Override
@@ -55,13 +69,16 @@ public class ActivityRegisterNewBusiness_2 extends AppCompatActivity implements 
                 break;
 
             case R.id.imageView11:
+
                 GPSTracker gpsTracker = new GPSTracker(this);
-                double lat = gpsTracker.getLatitude();
-                double lng = gpsTracker.getLongitude();
+                Double lat = gpsTracker.getLatitude();
+                Double lng = gpsTracker.getLongitude();
+                latitude=String.valueOf(lat);
+                longitude=String.valueOf(lng);
                 if (lat != 0.0 && lng != 0.0) {
                     getAddressOfLocation(lat, lng);
                 } else {
-                    Toast.makeText(this, "No able to get location enter manually", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Not able to get location enter manually", Toast.LENGTH_SHORT).show();
                 }
 
                 break;
@@ -72,16 +89,27 @@ public class ActivityRegisterNewBusiness_2 extends AppCompatActivity implements 
     private boolean isValidate(){
         if (HRValidationHelper.isNull(binding.spinnergender.getSelectedItem().toString())){
             Toast.makeText(this, "Select gender", Toast.LENGTH_SHORT).show();
+            HRLogger.showSneckbar(binding.constraintLayout,"Select Gender");
             return false;
         }else if (HRValidationHelper.isNull(binding.etShopLocation.getText().toString())){
-            Toast.makeText(this, "Enter LOCation", Toast.LENGTH_SHORT).show();
+            HRLogger.showSneckbar(binding.constraintLayout,"Enter Location");
             return false;
         }else if (HRValidationHelper.isNull(binding.spinnercorebusiness.getSelectedItem().toString())){
-            Toast.makeText(this, "Select Core business", Toast.LENGTH_SHORT).show();
+            HRLogger.showSneckbar(binding.constraintLayout,"Select Core Business");
             return false;
         }else if (HRValidationHelper.isNull(binding.etComments.getText().toString())){
-            Toast.makeText(this, "Enter Comments", Toast.LENGTH_SHORT).show();
+            HRLogger.showSneckbar(binding.constraintLayout,"Enter Comments");
             return false;
+        }
+        else if (HRValidationHelper.isNull(longitude) || HRValidationHelper.isNull(latitude)){
+            HRLogger.showSneckbar(binding.constraintLayout,"Please Tap on Location Marker to get Current Location");
+            return false;
+        }
+         else if (!HRValidationHelper.isNull(longitude) || !HRValidationHelper.isNull(latitude)){
+            if(latitude.equals("0.0") || longitude.equals("0.0") ){
+                HRLogger.showSneckbar(binding.constraintLayout,"Please Tap on Location Marker to get Current Location");
+                return false;
+            }
         }
         return true;
     }
@@ -123,6 +151,9 @@ public class ActivityRegisterNewBusiness_2 extends AppCompatActivity implements 
         intent.putExtra(HRAppConstants.key_spinnershoplocation, binding.etShopLocation.getText().toString());
         intent.putExtra(HRAppConstants.key_corebusiness, binding.spinnercorebusiness.getSelectedItem().toString());
         intent.putExtra(HRAppConstants.key_activities, binding.etComments.getText().toString());
+        intent.putExtra(HRAppConstants.key_latitude, latitude);
+        intent.putExtra(HRAppConstants.key_longitude, longitude);
+
         startActivity(intent);
     }
 }

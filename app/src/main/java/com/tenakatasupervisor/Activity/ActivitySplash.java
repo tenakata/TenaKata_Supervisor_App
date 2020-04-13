@@ -56,6 +56,7 @@ public class ActivitySplash extends AppCompatActivity {
         if (!dimentionSessionManager.isDimentionAvailable()) {
 
             dimentionSessionManager.saveDeviceDimention(displaymetrics.widthPixels, displaymetrics.heightPixels);
+
         }
     }
 }

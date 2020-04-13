@@ -99,6 +99,8 @@ private ActivityRegisterNewBusiness4Binding binding;
         intent.putExtra(HRAppConstants.key_financial_institution,previntent.getStringExtra(HRAppConstants.key_financial_institution));
         intent.putExtra(HRAppConstants.key_name,previntent.getStringExtra(HRAppConstants.key_name));
         intent.putExtra(HRAppConstants.key_imagepath,previntent.getStringExtra(HRAppConstants.key_imagepath));
+        intent.putExtra(HRAppConstants.key_latitude,previntent.getStringExtra(HRAppConstants.key_latitude));
+        intent.putExtra(HRAppConstants.key_longitude,previntent.getStringExtra(HRAppConstants.key_longitude));
 
 
 
