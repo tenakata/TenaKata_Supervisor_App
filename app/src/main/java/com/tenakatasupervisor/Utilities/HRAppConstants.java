@@ -52,22 +52,22 @@ public interface HRAppConstants {
     int kResponseNotAccess = 401;
     int kUpdateDevice = 205;
     int kRESPONSE_NO_TOKEN = 403;
-  //  http://ec2-34-221-232-228.us-west-2.compute.amazonaws.com/book/set_mp_pin
-    String URL_LOGIN ="book/login";
-    String URL_CREATE_MPIN ="book/set_mp_pin";
-    String URL_CHECK_USER ="book/check_user";
-    String URL_FORGOT_PASSWORD ="book/forget_password";
-    String URL_LOGIN_WITH_MPIN ="book/mp_pin";
-    String URL_LOGOUT ="book/logout";
-    String URL_SIGN_UP="book/sign_up";
-    String URL_HOME="book/supervisor_home";
-    String URL_BUSINESSVISIT="book/bussiness_visit";
-    String URL_BUSINESSDETAIL="book/business_details";
-    String URL_PROFILE="book/profile";
-    String URL_TRAINING="book/training";
-    String URL_TRAINING_VIEW="book/training_viewDetails";
-    String URL_TRAINING_RATING="book/training_rating";
-    String URL_CHECKVALIDATION="book/check_validation";
+  //  http://ec2-34-221-232-228.us-west-2.compute.amazonaws.com/index.php/set_mp_pin
+    String URL_LOGIN ="index.php/login";
+    String URL_CREATE_MPIN ="index.php/set_mp_pin";
+    String URL_CHECK_USER ="index.php/check_user";
+    String URL_FORGOT_PASSWORD ="index.php/forget_password";
+    String URL_LOGIN_WITH_MPIN ="index.php/mp_pin";
+    String URL_LOGOUT ="index.php/logout";
+    String URL_SIGN_UP="index.php/sign_up";
+    String URL_HOME="index.php/supervisor_home";
+    String URL_BUSINESSVISIT="index.php/bussiness_visit";
+    String URL_BUSINESSDETAIL="index.php/business_details";
+    String URL_PROFILE="index.php/profile";
+    String URL_TRAINING="index.php/training";
+    String URL_TRAINING_VIEW="index.php/training_viewDetails";
+    String URL_TRAINING_RATING="index.php/training_rating";
+    String URL_CHECKVALIDATION="index.php/check_validation";
 
 
     String key_imagepath ="image" ;
