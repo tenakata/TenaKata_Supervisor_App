@@ -100,6 +100,7 @@
                     android:background="@drawable/bg_login_button"
                     android:fontFamily="@font/montserrat_regular"
                     android:text="@string/edit"
+                    android:visibility="gone"
                     android:drawableLeft="@drawable/editpencil"
                     android:textColor="#FFFFFF"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_supervisor"
