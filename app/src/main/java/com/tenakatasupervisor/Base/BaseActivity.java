@@ -372,7 +372,6 @@ public abstract class BaseActivity extends AppCompatActivity
                 gpsErrorDialog.show();
             }
         }
-
     }
 
     @Override
