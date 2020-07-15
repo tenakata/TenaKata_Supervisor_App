@@ -42,7 +42,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout5"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -53,7 +53,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.5768194" />
+                        app:layout_constraintGuide_begin="200dp" />
 
                     <CheckBox
                         android:id="@+id/op1a"
@@ -63,7 +63,7 @@
                         android:layout_marginTop="20dp"
                         android:fontFamily="@font/montserrat_bold"
                         android:text="MPESA"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -75,7 +75,7 @@
                         android:layout_marginBottom="20dp"
                         android:fontFamily="@font/montserrat_bold"
                         android:text="@string/banktransfer"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/op1a"
                         app:layout_constraintTop_toBottomOf="@+id/op1a" />
@@ -86,7 +86,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_bold"
                         android:text="@string/cashmcq"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="@+id/op1a"
                         app:layout_constraintStart_toStartOf="@+id/guideline7"
                         app:layout_constraintTop_toTopOf="@+id/op1a" />
@@ -98,7 +98,7 @@
                         android:layout_marginTop="30dp"
                         android:fontFamily="@font/montserrat_bold"
                         android:text="@string/chequemcq"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         app:layout_constraintStart_toStartOf="@+id/op1b"
                         app:layout_constraintTop_toBottomOf="@+id/op1b" />
 
@@ -106,8 +106,9 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout6"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/textView19"
                     app:layout_constraintTop_toBottomOf="@+id/textView19">
 
@@ -116,7 +117,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        app:layout_constraintGuide_end="157dp" />
+                        app:layout_constraintGuide_begin="200dp" />
 
                     <CheckBox
                         android:id="@+id/op2a"
@@ -126,7 +127,7 @@
                         android:layout_marginTop="20dp"
                         android:fontFamily="@font/montserrat_bold"
                         android:text="@string/mpesa"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -138,7 +139,7 @@
                         android:layout_marginBottom="20dp"
                         android:fontFamily="@font/montserrat_bold"
                         android:text="@string/banktransfer"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/op2a"
                         app:layout_constraintTop_toBottomOf="@+id/op2a" />
@@ -149,7 +150,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_bold"
                         android:text="@string/cashmcq"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="@+id/op2a"
                         app:layout_constraintStart_toStartOf="@+id/guideline10"
                         app:layout_constraintTop_toTopOf="@+id/op2a" />
@@ -161,7 +162,7 @@
                         android:layout_marginTop="30dp"
                         android:fontFamily="@font/montserrat_bold"
                         android:text="@string/chequemcq"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         app:layout_constraintStart_toStartOf="@+id/op2b"
                         app:layout_constraintTop_toBottomOf="@+id/op2b" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -169,8 +170,9 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout7"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/textView25"
                     app:layout_constraintTop_toBottomOf="@+id/textView25">
 
@@ -179,7 +181,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        app:layout_constraintGuide_end="157dp" />
+                        app:layout_constraintGuide_begin="200dp" />
 
                     <CheckBox
                         android:id="@+id/op3a"
@@ -190,7 +192,7 @@
                         android:layout_marginBottom="20dp"
                         android:fontFamily="@font/montserrat_bold"
                         android:text="@string/personal"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -201,7 +203,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_bold"
                         android:text="@string/borrowing"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="@+id/op3a"
                         app:layout_constraintStart_toStartOf="@+id/guideline11"
                         app:layout_constraintTop_toTopOf="@+id/op3a" />

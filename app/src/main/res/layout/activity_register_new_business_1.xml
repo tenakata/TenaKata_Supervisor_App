@@ -163,7 +163,7 @@
                         android:id="@+id/et_register"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="number"
+                        android:inputType="text"
                         android:fontFamily="@font/montserrat_regular"
                         android:hint="@string/registrationno"
                         android:textSize="@dimen/sp_14" />

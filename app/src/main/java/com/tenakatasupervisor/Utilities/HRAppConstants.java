@@ -68,6 +68,8 @@ public interface HRAppConstants {
     String URL_TRAINING_VIEW="index.php/training_viewDetails";
     String URL_TRAINING_RATING="index.php/training_rating";
     String URL_CHECKVALIDATION="index.php/check_validation";
+    String URL_OTP ="index.php/otp" ;
+    String URL_CHECK_OTP="index.php/check_otp";
 
 
     String key_imagepath ="image" ;

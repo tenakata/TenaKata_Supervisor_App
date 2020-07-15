@@ -8,6 +8,11 @@ import com.tenakatasupervisor.Activity.ActivityForgotPassword;
 import com.tenakatasupervisor.Activity.ActivityLogin;
 import com.tenakatasupervisor.Activity.ActivityLoginWithMpin;
 import com.tenakatasupervisor.Activity.ActivityOTPVerification;
+import com.tenakatasupervisor.Activity.ActivityRegisterNewBusiness_1;
+import com.tenakatasupervisor.Activity.ActivityRegisterNewBusiness_2;
+import com.tenakatasupervisor.Activity.ActivityRegisterNewBusiness_3;
+import com.tenakatasupervisor.Activity.ActivityRegisterNewBusiness_4;
+import com.tenakatasupervisor.Activity.ActivityRegisterNewBusiness_5;
 import com.tenakatasupervisor.Activity.ActivityShopDetails;
 import com.tenakatasupervisor.Activity.ActivityTutorials;
 import com.tenakatasupervisor.Activity.ActivityDashboard;
@@ -58,6 +63,26 @@ public class IntentHelper {
 
     public static Intent getActivityLoginWithMpin(Context context) {
         return new Intent(context, ActivityLoginWithMpin.class)
+                .setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+    }
+    public static Intent getActivity1(Context context) {
+        return new Intent(context, ActivityRegisterNewBusiness_1.class)
+                .setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+    }
+    public static Intent getActivity2(Context context) {
+        return new Intent(context, ActivityRegisterNewBusiness_2.class)
+                .setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+    }
+    public static Intent getActivity3(Context context) {
+        return new Intent(context, ActivityRegisterNewBusiness_3.class)
+                .setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+    }
+    public static Intent getActivity4(Context context) {
+        return new Intent(context, ActivityRegisterNewBusiness_4.class)
+                .setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+    }
+    public static Intent getActivity5(Context context) {
+        return new Intent(context, ActivityRegisterNewBusiness_5.class)
                 .setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
     }
 

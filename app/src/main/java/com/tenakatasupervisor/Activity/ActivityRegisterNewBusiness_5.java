@@ -22,6 +22,7 @@ import com.tenakatasupervisor.Models.LoginModel;
 import com.tenakatasupervisor.Models.ModelSuccess;
 import com.tenakatasupervisor.Network.Authentication;
 import com.tenakatasupervisor.R;
+import com.tenakatasupervisor.Utilities.BusinessRegisterPref;
 import com.tenakatasupervisor.Utilities.HRAppConstants;
 import com.tenakatasupervisor.Utilities.HRLogger;
 import com.tenakatasupervisor.Utilities.HRPrefManager;
@@ -38,6 +39,7 @@ import java.util.Map;
 
 public class ActivityRegisterNewBusiness_5 extends BaseActivity {
     ActivityRegisterNewBusiness5Binding binding;
+    BusinessRegisterPref businessRegisterPref;
     private ProgressDialog progressDialog;
     JSONObject parameters;
     String business_name, name, phone, country_code, location, role, image, owner_name, business_registered, registration_no, gender,
@@ -53,6 +55,7 @@ public class ActivityRegisterNewBusiness_5 extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_register_new_business_5);
+         businessRegisterPref=new BusinessRegisterPref(this);
         progressDialog = new ProgressDialog(context);
         context = this;
         intent = getIntent();
@@ -292,6 +295,8 @@ public class ActivityRegisterNewBusiness_5 extends BaseActivity {
         super.onTaskSuccess(responseObj);
 
         if (responseObj instanceof ModelSuccess) {
+
+           businessRegisterPref.clearPrefs();
 
             Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_LONG).show();
 

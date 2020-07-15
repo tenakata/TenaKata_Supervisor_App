@@ -10,6 +10,7 @@ import android.util.DisplayMetrics;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.tenakatasupervisor.Utilities.BusinessRegisterPref;
 import com.tenakatasupervisor.Utilities.DimentionSessionManager;
 import com.tenakatasupervisor.Utilities.HRPrefManager;
 import com.tenakatasupervisor.Utilities.IntentHelper;
@@ -19,6 +20,7 @@ import com.tenakatasupervisor.databinding.ActivitySplashBinding;
 public class ActivitySplash extends AppCompatActivity {
     private Context context;
     private ActivitySplashBinding binding;
+    BusinessRegisterPref businessRegisterPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,8 @@ public class ActivitySplash extends AppCompatActivity {
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_splash);
+        businessRegisterPref =new BusinessRegisterPref(this);
+        businessRegisterPref.clearPrefs();
         context =this;
 
         new Handler().postDelayed(new Runnable() {

@@ -35,7 +35,11 @@ import com.tenakatasupervisor.Utilities.IntentHelper;
 import com.tenakatasupervisor.databinding.FragmentProfileBinding;
 import com.theartofdev.edmodo.cropper.CropImage;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import id.zelory.compressor.Compressor;
 
 import static android.app.Activity.RESULT_OK;
 import static com.tenakatasupervisor.Activity.ActivityDashboard.profilepicpath;
@@ -244,7 +248,17 @@ public class FragmentProfile extends BaseFragment {
             if (resultCode == RESULT_OK) {
                 try {
 
-                    profilepicpath = result.getUri().getEncodedPath();
+
+
+                   /* File compressedImageFile = Compressor.getDefault(context).compressToFile(new File(result.getUri().getEncodedPath()));
+                    Uri x=Uri.fromFile(new File(compressedImageFile.getPath()));
+                    profilepicpath=String.valueOf(x.getPath());*/
+                    try {
+                        profilepicpath=   String.valueOf(new Compressor(context).compressToFile(
+                                new File(result.getUri().getPath())));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
                     Glide.with(this)
                             .load(profilepicpath)
@@ -276,9 +290,9 @@ public class FragmentProfile extends BaseFragment {
         } else if (HRValidationHelper.isNull(binding.emailEditText.getText().toString())) {
             Toast.makeText(context, "Enter Email address", Toast.LENGTH_SHORT).show();
             return false;
-        }else if (!HRValidationHelper.isValidEmail(binding.emailEditText.getText().toString())) {
+       /* }else if (!HRValidationHelper.isValidEmail(binding.emailEditText.getText().toString())) {
             Toast.makeText(context, "Enter Valid Email address", Toast.LENGTH_SHORT).show();
-            return false;
+            return false;*/
         }else if (HRValidationHelper.isNull(binding.mobileEditText.getText().toString())) {
             Toast.makeText(context, "Enter Mobile Number", Toast.LENGTH_SHORT).show();
             return false;

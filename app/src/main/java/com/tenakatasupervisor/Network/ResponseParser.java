@@ -6,6 +6,7 @@ import com.tenakatasupervisor.Application.App;
 import com.tenakatasupervisor.Models.LoginModel;
 import com.tenakatasupervisor.Models.ModelBusinessVisit;
 import com.tenakatasupervisor.Models.ModelHome;
+import com.tenakatasupervisor.Models.ModelOtp;
 import com.tenakatasupervisor.Models.ModelSuccess;
 import com.tenakatasupervisor.Models.TrainingListModel;
 import com.tenakatasupervisor.Models.TrainingViewModel;
@@ -40,10 +41,13 @@ public class ResponseParser {
                 case HRAppConstants.URL_CREATE_MPIN:
                 case HRAppConstants.URL_TRAINING_RATING:
                 case HRAppConstants.URL_CHECKVALIDATION:
+                case HRAppConstants.URL_CHECK_OTP:
                     return App.getInstance().getGson().fromJson(response, ModelSuccess.class);
 
                 case HRAppConstants.URL_HOME:
                     return  App.getInstance().getGson().fromJson(response, ModelHome.class);
+                case HRAppConstants.URL_OTP:
+                    return App.getInstance().getGson().fromJson(response, ModelOtp.class);
 
                 case HRAppConstants.URL_BUSINESSDETAIL :
                     return  App.getInstance().getGson().fromJson(response,ModelBusinessDetails.class);

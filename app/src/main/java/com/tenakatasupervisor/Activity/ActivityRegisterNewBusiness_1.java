@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.media.MediaBrowserCompat;
@@ -25,6 +26,7 @@ import com.tenakatasupervisor.Utilities.HRAppConstants;
 import com.tenakatasupervisor.Utilities.HRLogger;
 import com.tenakatasupervisor.Utilities.HRUrlFactory;
 import com.tenakatasupervisor.Utilities.HRValidationHelper;
+import com.tenakatasupervisor.Utilities.IntentHelper;
 import com.tenakatasupervisor.databinding.ActivityLoginBinding;
 import com.tenakatasupervisor.databinding.ActivityRegisterNewBusiness1Binding;
 public class ActivityRegisterNewBusiness_1 extends BaseActivity implements View.OnClickListener {
@@ -32,6 +34,8 @@ RadioGroup radioGroup;
 RadioButton radioButton;
 int selectedradiobuttonid;
 int radioflag=0;
+    private SharedPreferences mPrefs;
+    private static final String PREF_NAME="Prefsfile";
 Boolean checkvalidation=false;
     private String countryCode;
     private ActivityRegisterNewBusiness1Binding binding;
@@ -50,6 +54,7 @@ Boolean checkvalidation=false;
         binding.radioButtonNo.setOnClickListener(this);
         binding.buttonfirst.setOnClickListener(this);
         radioGroup=(RadioGroup)findViewById(R.id.radioGroup);
+        mPrefs = getSharedPreferences(PREF_NAME,MODE_PRIVATE);
         binding.tvHeadLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,6 +116,7 @@ Boolean checkvalidation=false;
     }
 
     private void goToNextActivity() {
+
         Intent intent=new Intent(ActivityRegisterNewBusiness_1.this,ActivityRegisterNewBusiness_2.class);
         intent.putExtra(HRAppConstants.key_businessname,binding.etBusinessname.getText().toString());
         intent.putExtra(HRAppConstants.key_nameofowner,binding.etNameofowner.getText().toString());
@@ -118,6 +124,7 @@ Boolean checkvalidation=false;
         if (radioflag==0){
             intent.putExtra(HRAppConstants.key_registrationno,binding.etRegister.getText().toString());
         }
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         intent.putExtra(HRAppConstants.key_country_code,countryCode);
         intent.putExtra(HRAppConstants.key_isbusinessregistered,radioButton.getText().toString());
         startActivity(intent);
@@ -194,4 +201,6 @@ Boolean checkvalidation=false;
     public void onProviderDisabled(String provider) {
 
     }
+
+
 }

@@ -1603,9 +1603,9 @@ public class Authentication {
         SimpleMultiPartRequest request = new SimpleMultiPartRequest(Request.Method.POST,
                 url, new Response.Listener<String>() {
             public void onResponse(String response) {
-                if (HRUrlFactory.isModeDevelopment()) {
+
                     print(url, String.valueOf(response), "", "");
-                }
+
                 try {
                     JSONObject resObj = new JSONObject(response);
                     if (resObj.has(HRAppConstants.kResponseCode) &&

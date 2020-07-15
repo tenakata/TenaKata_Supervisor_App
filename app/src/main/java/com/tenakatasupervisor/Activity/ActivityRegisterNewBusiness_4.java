@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 
 import com.tenakatasupervisor.R;
+import com.tenakatasupervisor.Utilities.BusinessRegisterPref;
 import com.tenakatasupervisor.Utilities.HRAppConstants;
 import com.tenakatasupervisor.Utilities.HRLogger;
 import com.tenakatasupervisor.Utilities.HRValidationHelper;
@@ -19,12 +20,14 @@ public class ActivityRegisterNewBusiness_4 extends AppCompatActivity implements 
 private  Button nextbtn;
 private Intent previntent;
 private int radioflag=0;
+BusinessRegisterPref businessRegisterPref;
 private ActivityRegisterNewBusiness4Binding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_register_new_business_4);
         previntent=getIntent();
+        businessRegisterPref=new BusinessRegisterPref(this);
         binding.tvHeadLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -34,6 +37,28 @@ private ActivityRegisterNewBusiness4Binding binding;
        binding.fourthbutton.setOnClickListener(this);
        binding.radioButtonyes.setOnClickListener(this);
        binding.radioButtonNo.setOnClickListener(this);
+        if (!HRValidationHelper.isNull(businessRegisterPref.getLoanAmount())){
+            binding.etLoanamount.setText(businessRegisterPref.getLoanAmount());
+        }
+        if (!HRValidationHelper.isNull(String.valueOf(businessRegisterPref.getLoanPurpose()))){
+            binding.loanpurposeSpinner.setSelection(businessRegisterPref.getLoanPurpose());
+        }
+        if (!HRValidationHelper.isNull(businessRegisterPref.getNameee())){
+            binding.radioGroupfourth.check(businessRegisterPref.getTakenAnyLoan());
+            switch (businessRegisterPref.getTakenAnyLoan()){
+                case R.id.radioButtonyes:
+                    binding.etLayoutLoanamount.setVisibility(View.VISIBLE);
+                    binding.loanpurposeSpinner.setVisibility(View.VISIBLE);
+                    radioflag=0;
+                    break;
+                case R.id.radioButtonNo:
+                    binding.etLayoutLoanamount.setVisibility(View.GONE);
+                    binding.loanpurposeSpinner.setVisibility(View.GONE);
+                    radioflag=1;
+                    break;
+            }
+        }
+
     }
 
     @Override
@@ -102,7 +127,7 @@ private ActivityRegisterNewBusiness4Binding binding;
         intent.putExtra(HRAppConstants.key_latitude,previntent.getStringExtra(HRAppConstants.key_latitude));
         intent.putExtra(HRAppConstants.key_longitude,previntent.getStringExtra(HRAppConstants.key_longitude));
 
-
+        businessRegisterPref.setRegisterBusiness4(binding.radioGroupfourth.getCheckedRadioButtonId(),binding.etLoanamount.getText().toString(),binding.loanpurposeSpinner.getSelectedItemPosition());
 
 
 
